@@ -5,18 +5,26 @@ import Startpage from './Components/Startpage';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Account from './Components/Account';
+import Selectedhotel from './Components/Selectedhotel';
+import { Usercontext } from './Components/Usercontext';
+import { useState } from 'react';
 function App() {
+const [userid,setUserid]=useState("")
   return (
     <div className="App">
+    <Usercontext.Provider value={{userid,setUserid}}>
       <Router>
         <Routes>
         <Route element={<Admin />}  path='/admin' />
         <Route element={<Startpage />} path="/"></Route>
         <Route element={<Login />} path="/login"></Route>
         <Route element={<Signup />} path="/signup"></Route>
-        <Route element={<Account />} path="/account"></Route>
+        <Route element={<Account />} path="/account">
+        <Route element={<Selectedhotel />} path="sh"></Route>
+        </Route>
         </Routes>
       </Router>
+      </Usercontext.Provider>
     </div>
   );
 }

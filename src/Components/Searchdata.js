@@ -1,1 +1,1 @@
-export const searchdata=["Iringalkuda","Thrissur","Ernakulam","Thiruvanathapuram","Kottayam","Idukki","Palakad","Chakkarapadam","Perijnanam"]
+export const searchdata=["Irinjalakuda","Thrissur","Ernakulam","Thiruvanathapuram","Kottayam","Idukki","Palakad","Chakkarapadam","Perijnanam"]

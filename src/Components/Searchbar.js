@@ -10,14 +10,16 @@ function Searchbar(props) {
   setSelected("")
   }
   return (
-    <div>
+    <div className='mainbody'>
+       <div className='searchbar'>
         <input type="text" placeholder="search here" value={selected ? selected : searchitem} onChange={(e)=>setSearchitem(e.target.value)}></input>
         <button onClick={search}>Search</button>
         {searchdata.filter((item)=>{
             const data=item.toLowerCase();
             const inputdata=searchitem.toLowerCase();
             return inputdata && data.startsWith(inputdata)
-        }).map((item)=><p key={item} onClick={()=>setSelected(item)}>{item}</p>)}
+        }).map((item)=><p className='options' key={item} onClick={()=>setSelected(item)}>{item}</p>)}
+        </div>
     </div>
   )
 }

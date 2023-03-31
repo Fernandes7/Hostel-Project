@@ -1,10 +1,20 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 function Signup() {
     const history=useNavigate()
-    const handle=()=>{
-        axios.post("http://localhost:8000/login")
+    const [data,setData]=useState({})
+    const handle=(event)=>{
+      setData({...data,[event.target.name]:event.target.value})
+    }
+    const passdata=()=>{
+      axios.post("http://localhost:8000/signup",{data}).then((responce)=>{
+        if(responce)
+        {
+          alert("Please Login using your created fields")
+          history("/login")
+        }
+      })
     }
   return (
     <div className='loginbody'>
@@ -13,10 +23,10 @@ function Signup() {
         <div className='inputdiv'>
         <h2>Welcome Hosteler</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <input type="text" placeholder="Enter Your Name" name="email" onChange={handle}></input>
+        <input type="text" placeholder="Enter Your Name" name="username" onChange={handle}></input>
         <input type="text" placeholder="Enter Your Email" name="email" onChange={handle}></input>
         <input type="password" placeholder="Enter Your Password" name="password" onChange={handle}></input>
-        <button>Signup</button>
+        <button onClick={passdata}>Signup</button>
         <label>Already have account</label>
         <label className='labelforsignin' onClick={()=>history("/login")}>Login</label>
         </div>

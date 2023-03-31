@@ -1,0 +1,37 @@
+.searchbar{
+    width:100%;
+    height: 70px;
+    background: rgb(137,128,237);
+    background: linear-gradient(77deg, rgb(29, 23, 107) 0%, rgb(156, 141, 239) 100%);
+}
+.searchbar input{
+    width:300px;
+    height:40px;
+    font-family: poppins;
+    background:white;
+    border:none;
+    border-radius: 5px;
+    margin-left:10px;
+    padding-left:10px;
+    margin-top: 20px;
+}
+ .searchbar button{
+    width:100px;
+    height: 40px;
+    margin-left:50px;
+    border-radius: 20px;
+    border:none;
+    background: rgb(213,212,222);
+    background: radial-gradient(circle, rgba(213,212,222,1) 0%, rgb(96, 170, 219) 100%);
+    color:rgb(9, 9, 110);
+    font-weight:600;
+ }
+ .options{
+    margin-left: 10px;
+    width:300px;
+    font-family: poppins;
+    margin-top:20px;
+    background-color:white;
+    border-bottom: solid black 2px;
+    text-align: center;
+ }

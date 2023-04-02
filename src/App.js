@@ -8,6 +8,8 @@ import Account from './Components/Account';
 import Selectedhotel from './Components/Selectedhotel';
 import { Usercontext } from './Components/Usercontext';
 import { useState } from 'react';
+import Profile from './Components/Profile'
+import Profileupdate from './Components/profileupdate';
 function App() {
 const [userid,setUserid]=useState("")
   return (
@@ -21,6 +23,8 @@ const [userid,setUserid]=useState("")
         <Route element={<Signup />} path="/signup"></Route>
         <Route element={<Account />} path="/account"></Route>
         <Route element={<Selectedhotel />} path="/sh"></Route>
+        <Route element={<Profile />} path="/profile"></Route>
+        <Route element={<Profileupdate />} path="/profileupdate"></Route>
         </Routes>
       </Router>
       </Usercontext.Provider>

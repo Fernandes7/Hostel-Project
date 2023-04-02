@@ -22,6 +22,7 @@
 .accountlogo{
     width: 30px;
     height: 25px;
+    color:rgb(255, 252, 222);
 }
 .searchloading{
     text-align: center;
@@ -31,4 +32,27 @@
 .navright p{
     color:rgb(251, 251, 251);
     font-family: 'Lora', serif;
+}
+.profilediv{
+    width:200px;
+    height: 150px;
+    background: rgb(232, 243, 249);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border-radius: 10px;  
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    position: absolute;
+    top:3rem;
+    right:1%;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    padding-top: 10px;
+    color:rgb(6, 6, 6);
+}
+.innerprofilediv{
+display:flex;
+gap:20px;
+margin-left:30px;
+font-family: 'Lora';
+font-weight: bold;
 }

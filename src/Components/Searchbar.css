@@ -43,7 +43,8 @@
     z-index: 2;
  }
  .options:hover{
-    color:blue;
+    color:#004e92;
+    scale:calc(1.03)
  }
  .mainbody{
     position:absolute;

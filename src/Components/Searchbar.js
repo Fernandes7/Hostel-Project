@@ -13,7 +13,7 @@ function Searchbar(props) {
     <div className='mainbody'>
        <div className='searchbar'>
         <input type="text" placeholder="search here" value={selected ? selected : searchitem} onChange={(e)=>setSearchitem(e.target.value)}></input>
-        <button onClick={search}>Search</button>
+        <button onClick={search}>SEARCH</button>
         {searchdata.filter((item)=>{
             const data=item.toLowerCase();
             const inputdata=searchitem.toLowerCase();

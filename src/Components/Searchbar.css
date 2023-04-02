@@ -1,8 +1,11 @@
 .searchbar{
     width:100%;
     height: 70px;
-    background: rgb(137,128,237);
-    background: linear-gradient(77deg, rgb(29, 23, 107) 0%, rgb(156, 141, 239) 100%);
+    background: rgb(9,4,56);
+    background: #000428;
+    background: -webkit-linear-gradient(to right, #004e92, #000428); 
+    background: linear-gradient(to right, #004e92, #000428);
+    padding-bottom: 20px; 
 }
 .searchbar input{
     width:300px;
@@ -22,16 +25,28 @@
     border-radius: 20px;
     border:none;
     background: rgb(213,212,222);
-    background: radial-gradient(circle, rgba(213,212,222,1) 0%, rgb(96, 170, 219) 100%);
-    color:rgb(9, 9, 110);
     font-weight:600;
+    font-family: 'Inter Tight', sans-serif;
+    -webkit-box-shadow: 10px 10px 14px -9px rgba(3,3,3,1);
+    -moz-box-shadow: 10px 10px 14px -9px rgba(3,3,3,1);
+    box-shadow: 10px 10px 14px -9px rgba(3,3,3,1);
+
  }
  .options{
     margin-left: 10px;
     width:300px;
     font-family: poppins;
-    margin-top:20px;
+    margin-top:40px;
     background-color:white;
     border-bottom: solid black 2px;
     text-align: center;
+    z-index: 2;
+ }
+ .options:hover{
+    color:blue;
+ }
+ .mainbody{
+    position:absolute;
+    width:100%;
+    top:5%;
  }

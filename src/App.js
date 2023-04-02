@@ -19,9 +19,8 @@ const [userid,setUserid]=useState("")
         <Route element={<Startpage />} path="/"></Route>
         <Route element={<Login />} path="/login"></Route>
         <Route element={<Signup />} path="/signup"></Route>
-        <Route element={<Account />} path="/account">
-        <Route element={<Selectedhotel />} path="sh"></Route>
-        </Route>
+        <Route element={<Account />} path="/account"></Route>
+        <Route element={<Selectedhotel />} path="/sh"></Route>
         </Routes>
       </Router>
       </Usercontext.Provider>

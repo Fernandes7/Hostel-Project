@@ -7,7 +7,7 @@ function Profile() {
   const [selection,setSelecton]=useState(1)
   return (
     <div>
-    <img className='profilebackimg' src="https://img5.goodfon.com/wallpaper/nbig/6/58/gunten-switzerland-thunersee-lake-thun-bernese-alps-gunten-s.jpg" alt="images"></img>
+    <img className='profilebackimg' src="https://img.jamesedition.com/listing_images/2023/02/21/12/32/36/0236076f-4269-443b-acdb-2b82c87730de/je/1000x620xc.jpg" alt="images"></img>
     <div className='profiledetaildiv'>
     <div className='profileimagediv'>
         <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""></img>
@@ -32,7 +32,38 @@ function Profile() {
         </div>
         <button onClick={()=>history("/profileupdate",{state:{profile:profile.state.profile}})}>Update</button>
         <button onClick={()=>history("/account",{state:{data:profile.state.profile}})}>Cancel</button>
-        </div>:profile.state.profile.age!=="" ? <p>Nothing to show</p>:<p>Datsa</p>}
+        </div>:!profile.state.profile.contactno ? <p className='profiledatadivdata profiledatadiv'>You didn't have Added Additional User details </p>:<div className='profiledatawrapdiv'>
+        <div className='profiledatadiv'>
+        <p>Contact No :</p>
+        <p className='profiledatadivdata'>{profile.state.profile.contactno}</p>
+        </div>
+        <div className='profiledatadiv'>
+        <p>Address :</p>
+        <p className='profiledatadivdata'>{profile.state.profile.Address}</p>
+        </div>
+        <div className='profiledatadiv'>
+        <p>Age :</p>
+        <p className='profiledatadivdata'>{profile.state.profile.Age}</p>
+        </div>
+        <div className='profiledatadiv'>
+        <p>Gender :</p>
+        <p className='profiledatadivdata'>{profile.state.profile.Gender}</p>
+        </div>
+        <div className='profiledatadiv'>
+        <p>Your Stand :</p>
+        <p className='profiledatadivdata'>{profile.state.profile.Status}</p>
+        </div>
+        <div className='profiledatadiv'>
+        <p>Location :</p>
+        <p className='profiledatadivdata'>{profile.state.profile.Place}</p>
+        </div>
+        <div className='profiledatadiv'>
+        <p>Company or College Name :</p>
+        <p className='profiledatadivdata'>{profile.state.profile.workplace}</p>
+        </div>
+        <button className='detailbutton' onClick={()=>history("/profileupdate",{state:{profile:profile.state.profile}})}>Update</button>
+        <button className='detailbutton' onClick={()=>history("/account",{state:{data:profile.state.profile}})}>Cancel</button>
+        </div>}
     </div>
     </div>
     </div>

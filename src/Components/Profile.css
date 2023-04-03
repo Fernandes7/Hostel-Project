@@ -2,7 +2,7 @@
     display:flex;
     position: absolute;
     width:600px;
-    height: 500px;
+    min-height: 500px;
     background: rgb(252, 250, 248,.8);
     top:50%;
     left:50%;
@@ -13,13 +13,14 @@
     transform: translate(-50%,-50%);
 }
 .profilebackimg{
-    width:700px;
-    height: 600px;
+    width:800px;
+    min-height: 700px;
     border-radius: 20px;
     position:absolute;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
+    filter:brightness(50%) ;
     -webkit-box-shadow: 15px 15px 20px -12px rgba(0,0,0,0.75);
     -moz-box-shadow: 15px 15px 20px -12px rgba(0,0,0,0.75);
     box-shadow: 15px 15px 20px -12px rgba(0,0,0,0.75);
@@ -99,4 +100,7 @@
 }
 .profileselectiondiv{
     margin-left: 40px;
+}
+.detailbutton{
+    margin-bottom: 20px;
 }

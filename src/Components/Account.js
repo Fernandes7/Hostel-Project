@@ -21,7 +21,7 @@ function Account() {
     setProfileenable(false)
   }
   return (
-    <div>
+    <div className='blackbody'>
       <div className='accountnavbar'>
         <img src={logo} alt="logo"></img>
         <div className='navright'>
@@ -31,7 +31,7 @@ function Account() {
       </div>
       {location ? <Displayhostel location={location} userid={userdata.state}/> :<Accountloader />}
       <Searchbar setLocation={setLocation} />
-      {profileenable && <div className='profilediv'>
+     <div className={profileenable ?'profilediv':'profileoff'}>
       <div className='innerprofilediv' onClick={()=>history("/profile" ,{state:{profile:userdata.state.data}})}>
         <FaRegUser />
         <p>Your Profile</p>
@@ -44,7 +44,7 @@ function Account() {
         <CiLogout />
         <p>Logout</p>
       </div>
-      </div>}
+      </div>
       <Outlet/>
     </div>
   )

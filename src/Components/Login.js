@@ -35,7 +35,7 @@ function Login() {
         <label className='labelforsignin' onClick={()=>history("/signup")}>Signup</label>
         </div>
         </div>
-    </div>
+        </div>
   )
 }
 

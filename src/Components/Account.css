@@ -1,9 +1,8 @@
 .accountnavbar{
     width:100%;
     height: 50px;
-    background: #000428;
-    background: -webkit-linear-gradient(to right, #004e92, #000428); 
-    background: linear-gradient(to right, #004e92, #000428); 
+    background: rgb(4,5,14);
+    background: linear-gradient(90deg, rgba(4,5,14,1) 0%, rgba(56,49,97,1) 49%, rgba(4,5,14,1) 100%);
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -41,13 +40,15 @@
     border-radius: 10px;  
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     position: absolute;
-    top:3rem;
+    top:4rem;
     right:1%;
     display:flex;
     flex-direction: column;
     gap:20px;
     padding-top: 10px;
     color:rgb(6, 6, 6);
+    transition: 1s ease-in-out;
+    transform: rotate(360deg);
 }
 .innerprofilediv{
 display:flex;
@@ -55,4 +56,26 @@ gap:20px;
 margin-left:30px;
 font-family: 'Lora';
 font-weight: bold;
+}
+body{
+    background: rgb(4,5,14);
+    background: linear-gradient(90deg, rgba(4,5,14,1) 0%, rgba(56,49,97,1) 49%, rgba(4,5,14,1) 100%);
+}
+.profileoff{
+    opacity:0;
+    transition:all 1s;
+    width:200px;
+    height: 150px;
+    background: rgb(239, 253, 255);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border-radius: 10px;  
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    position: absolute;
+    top:4rem;
+    right:1%;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    padding-top: 10px;
+    color:rgb(6, 6, 6);
 }

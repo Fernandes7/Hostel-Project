@@ -46,7 +46,7 @@
     margin-top: 30px;
     font-size: 20px;
     font-weight: bolder;
-    color:rgb(29, 6, 114)
+    color:rgb(243, 241, 251)
 }
 .displayoptions{
     display: flex;
@@ -61,23 +61,55 @@
     align-items: center;
 }
 .displaybuttondiv button{
-    width:60px;
+    width:80px;
     height: 30px;
     background: none;
-    border-color: #054688;
+    border-color: #f7f9fb;
     border-radius: 5px;
+    color:white;
     margin-top: 20px;
+    background: rgb(0, 14, 19);
 }
 .displaymain{
     position:relative;
     margin-top:100px;;
 }
 .filterdiv{
+    opacity: 1;
     width:200px;
-    height: 200px;
+    height:100px;
     border-radius: 10px;
-    background: rgb(138, 182, 225);
-    opacity: .8;
+    background: rgb(172,182,255);
+    background: linear-gradient(90deg, rgba(172,182,255,1) 0%, rgba(203,202,255,1) 49%, rgba(178,154,246,1) 100%);
     position: absolute;
     right:25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight:300;
+    gap:10px;
+    font-family: 'Satisfy', cursive;
+    transition: all 1s;
+}
+.filterdivoff{
+    opacity: 0;
+    transition: all 1s;
+    transform-origin: 10px;
+    width:200px;
+    height: 0px;
+    border-radius: 10px;
+    background: rgb(172,182,255);
+    background: linear-gradient(90deg, rgba(172,182,255,1) 0%, rgba(203,202,255,1) 49%, rgba(178,154,246,1) 100%);
+    position: absolute;
+    right:25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top:10px;
+    gap:10px;
+    font-family: 'Satisfy', cursive;
+
+
 }

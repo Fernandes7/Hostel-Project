@@ -8,6 +8,7 @@ function Searchbar(props) {
   props.setLocation(selected)
   setSearchitem("")
   setSelected("")
+  props.setSortenable(false)
   }
   return (
     <div className='mainbody'>

@@ -64,11 +64,12 @@
     width:80px;
     height: 30px;
     background: none;
-    border-color: #f7f9fb;
+    background: rgb(53,155,235);
+    background: linear-gradient(90deg, rgb(78, 178, 255) 0%, rgb(113, 193, 254) 50%, rgba(78,178,255) 100%);
     border-radius: 5px;
-    color:white;
+    color:black;
     margin-top: 20px;
-    background: rgb(0, 14, 19);
+    border: none;
 }
 .displaymain{
     position:relative;

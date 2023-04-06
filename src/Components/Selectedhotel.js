@@ -1,14 +1,13 @@
-import React, { useContext } from 'react'
-import { useLocation } from 'react-router'
-import { Usercontext } from './Usercontext'
+import "./Selectedhostel.css"
+import {useLocation} from "react-router-dom"
+import Map from './Map'
 function Selectedhotel() {
-  const {userid,Setuserid}=useContext(Usercontext)
-  const id=useLocation()
-  const value=userid
+  const data=useLocation()
+  console.log("mappeddata",data.state)
   return (
-    <div>Selectedhotel
-    <h1>{value}</h1>
-    <h2>{id.state.id}</h2></div>
+    <div className="selectmaindiv">
+     <Map /> 
+   </div>
   )
 }
 

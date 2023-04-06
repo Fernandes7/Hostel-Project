@@ -14,6 +14,7 @@ function Account() {
   const history=useNavigate()
   const [location,setLocation]=useState("")
   const [profileenable,setProfileenable]=useState(false)
+  const [sortenable,setSortenable]=useState(false)
   const profile=()=>{
     if(profileenable===false)
     setProfileenable(true)
@@ -29,8 +30,8 @@ function Account() {
         <CgProfile className='accountlogo' onClick={profile}/>
         </div>
       </div>
-      {location ? <Displayhostel location={location} userid={userdata.state}/> :<Accountloader />}
-      <Searchbar setLocation={setLocation} />
+      {location ? <Displayhostel location={location} userid={userdata.state} setSortenable={setSortenable} sortenable={sortenable}/> :<Accountloader />}
+      <Searchbar setLocation={setLocation} setSortenable={setSortenable} />
      <div className={profileenable ?'profilediv':'profileoff'}>
       <div className='innerprofilediv' onClick={()=>history("/profile" ,{state:{profile:userdata.state.data}})}>
         <FaRegUser />

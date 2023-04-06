@@ -6,7 +6,6 @@ function Displayhostel(props) {
 const history =useNavigate()
 const [datas,setDatas]=useState([""])
 const [filterenable,setFilterenable]=useState(false)
-const [sortenable,setSortenable]=useState(false)
 const [sorted,setSorted]=useState()
 useEffect(()=>{
 axios.get("http://localhost:8000/fetchhotel").then((responce)=>{
@@ -19,7 +18,7 @@ let hostel=datas.filter((data)=>{
 }).map((item)=>{
   return(
     <div className='hostelmaindiv'>
-      <div className='hostelwrap' onClick={()=>history("/sh",{state:{id:props.userid.data._id}})}>
+      <div className='hostelwrap' onClick={()=>history("/sh",{state:{user:props.userid.data,hostel:item}})}>
         <img src={item.hostelimage} alt="img"></img>
         <div className='hostelcontent'>
         <h3>{item.hostelname}</h3>
@@ -46,7 +45,7 @@ const sort=(no)=>{
  let sorteddisplay=sorteddata.map((item)=>{
     return(
       <div className='hostelmaindiv'>
-        <div className='hostelwrap' onClick={()=>history("/sh",{state:{id:props.userid.data._id}})}>
+        <div className='hostelwrap' onClick={()=>history("/sh",{state:{user:props.userid.data,hostel:item}})}>
           <img src={item.hostelimage} alt="img"></img>
           <div className='hostelcontent'>
           <h3>{item.hostelname}</h3>
@@ -57,7 +56,7 @@ const sort=(no)=>{
       </div>
     )
   })
-  setSortenable(true)
+  props.setSortenable(true)
   setSorted(sorteddisplay)
 }
   return (
@@ -73,7 +72,7 @@ const sort=(no)=>{
       <p onClick={()=>sort(1)}>Low to High</p>
       <p onClick={()=>sort(2)}>High to Low</p>
     </div>
-    <div className='hostelrow'onClick={close}>{sortenable ? sorted : hostel}</div>
+    <div className='hostelrow'onClick={close}>{props.sortenable ? sorted : hostel}</div>
     </div>
   )
 }

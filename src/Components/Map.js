@@ -6,7 +6,7 @@ import { Icon } from 'leaflet'
 import Mapcurrentlocation from './Mapcurrentlocation'
 import MapRouting from './MapRouting'
 import L from "leaflet"
-function Map() {
+function Map(props) {
   const [currentlocationenable,setCurrentlocationenable]=useState(false)
   const icon=new Icon({
     iconUrl:"https://cdn-icons-png.flaticon.com/512/5836/5836608.png",
@@ -19,28 +19,31 @@ function Map() {
   const location=Mapcurrentlocation()
   return (
     <div>
-    <MapContainer center={[10.310789,76.160004]} zoom={10} scrollWheelZoom={false}>
+    <MapContainer center={[props.hostel.lat,props.hostel.lng]} zoom={13} scrollWheelZoom={false}>
   <TileLayer
     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
   />
-  <Marker position={[10.347100,76.216698]} icon={icon}>
+  <Marker position={[props.hostel.lat,props.hostel.lng]} icon={icon}>
     <Popup>
-      <p className='mappopupcontent'>Chakkara Hostel</p>
+      <img className='hotelimagesinmap' src={props.hostel.hostelimage} alt="hotelimagesinmap"></img>
+      <p className='mappopupcontent'>{props.hostel.hostelname}</p>
     </Popup>
   </Marker>
   {currentlocationenable && location.loaded && !location.error &&(
-    <Marker position={[location.coordinates.lat,location.coordinates.lng]} icon={currentloactionicon}></Marker>
+    <Marker position={[location.coordinates.lat,location.coordinates.lng]} icon={currentloactionicon}>
+      <Popup><p>Current Location</p></Popup>
+    </Marker>
   )}
-  {currentlocationenable &&<MapRouting ></MapRouting>}
+  {currentlocationenable &&<MapRouting hlat={props.hostel.lat} hlng={props.hostel.lng} clat={location.coordinates.lat} clng={location.coordinates.lng}></MapRouting>}
 </MapContainer>
-<button onClick={()=>currentlocationenable ? setCurrentlocationenable(false):setCurrentlocationenable(true)}>See Your location</button>
+<button onClick={()=>setCurrentlocationenable(true)}>See Your location</button>
     </div>
   )
 }
 let defaulticon=L.icon({
-  iconUrl:"https://cdn-icons-png.flaticon.com/512/5836/5836608.png",
-  iconSize:[40,40]
+  iconUrl:"https://cdn-icons-png.flaticon.com/512/9800/9800512.png",
+  iconSize:[10,10]
 })
 L.Marker.prototype.options.icon=defaulticon
 export default Map

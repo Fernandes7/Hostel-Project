@@ -30,8 +30,9 @@
     height:40px;
     padding-left:5px;
     border-radius: 5px;
+    border:2px black solid;
     background: rgb(228,229,246);
-background: radial-gradient(circle, rgba(228,229,246,1) 0%, rgba(230,232,246,1) 100%);
+    background: radial-gradient(circle, rgba(228,229,246,1) 0%, rgba(230,232,246,1) 100%);
     
 }
 .adminwrap h3{

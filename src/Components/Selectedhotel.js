@@ -6,7 +6,7 @@ function Selectedhotel() {
   console.log("mappeddata",data.state)
   return (
     <div className="selectmaindiv">
-     <Map /> 
+     <Map hostel={data.state.hostel} /> 
    </div>
   )
 }

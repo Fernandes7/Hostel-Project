@@ -31,6 +31,10 @@ function Admin() {
         <input type="text" placeholder="Near By Places" name="nearbyplace" onChange={handle}></input>
         <input type="text" placeholder="Caterory eg:Single room or Combined room" name="category" onChange={handle}></input>
         <input type="number" placeholder="No of availablerooms" name="Availableroom" onChange={handle}></input>
+        <input type="text" placeholder="AC/Non Ac" name="Ac" onChange={handle}></input>
+        <input type="text" placeholder="Wifi availabilty" name="Wifi" onChange={handle}></input>
+        <input type="number" placeholder="Latitude" name="lat" onChange={handle}></input>
+        <input type="number" placeholder="Longitude" name="lng" onChange={handle}></input>
     </div>
     <button onClick={submit}>SUBMIT</button>
     </div>

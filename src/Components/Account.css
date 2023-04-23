@@ -35,7 +35,7 @@
 .profilediv{
     width:200px;
     height: 150px;
-    background: rgb(239, 253, 255);
+    background: rgb(209, 250, 255);
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     border-radius: 10px;  
     border: 1px solid rgba( 255, 255, 255, 0.18 );
@@ -48,7 +48,6 @@
     padding-top: 10px;
     color:rgb(6, 6, 6);
     transition: 1s ease-in-out;
-    transform: rotate(360deg);
 }
 .innerprofilediv{
 display:flex;

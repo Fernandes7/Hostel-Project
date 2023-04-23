@@ -62,3 +62,8 @@
     height:100vh;
     background: white;
 }
+.loginimages{
+    width:375px;
+    height: 500px;
+    border-radius: 20px;
+}

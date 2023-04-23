@@ -1,16 +1,45 @@
 import React, { useState } from 'react'
 import "./Profile.css"
 import { useLocation, useNavigate } from 'react-router'
+import axios from 'axios'
 function Profile() {
   const profile=useLocation()
   const history=useNavigate()
   const [selection,setSelecton]=useState(1)
+  const [profileilmgenable,setProfileimageenable]=useState(false)
+  const [image,setimage]=useState({})
+  const [fetchedprofileimg,setfetchedprofileimg]=useState()
+  let base64String;
+  let binaryvalue;
+  const imagepopup=(value)=>{
+    setProfileimageenable(value)
+  }
+  const imagesave=(e)=>{
+    setimage({picture:e.target.files[0]})
+  }
+  const uploadimage=()=>{
+    const formdata=new FormData()
+    formdata.append("image",image.picture)
+    axios.post(`http://localhost:8000/single/${profile.state.profile._id}`,formdata).then((responce)=>console.log(responce))
+    console.log("image is",image)
+  }
+  const fetchimage=()=>{
+    imagepopup(false)
+    axios.post(`http://localhost:8000/getimage/${profile.state.profile._id}`).then((responce)=>{
+    setfetchedprofileimg(responce.data[0].image.data.data)
+    fetchedprofileimg && console.log("herebaseeee",fetchedprofileimg)
+    fetchedprofileimg && (base64String = btoa(String.fromCharCode(...new Uint8Array(responce.data[0].image.data.data))))
+    })
+  }
   return (
     <div>
     <img className='profilebackimg' src="https://img.jamesedition.com/listing_images/2023/02/21/12/32/36/0236076f-4269-443b-acdb-2b82c87730de/je/1000x620xc.jpg" alt="images"></img>
     <div className='profiledetaildiv'>
     <div className='profileimagediv'>
-        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""></img>
+        {/* {fetchedprofileimg && fetchedprofileimg.map((value)=>{base64String = btoa(String.fromCharCode(...new Uint8Array(value.image.data.data)))
+        return <img src={`data:image/png;base64,${base64String}`} alt=""/>})} */}
+        <img src={`data:image/png;base64,${base64String}`} alt=""/>
+        <button className='detailbutton' onClick={()=>imagepopup(true)}>Add photo</button>
         <h3>Hey, {profile.state.profile.username}</h3>
     </div>
     <div className='profilecontent'>
@@ -66,6 +95,10 @@ function Profile() {
         </div>}
     </div>
     </div>
+    {profileilmgenable && <div className='profileupdatediv'>
+      <input type="file" onChange={imagesave}></input>
+      <div> <button className='detailsbutton' onClick={fetchimage}>Close</button><button className='detailsbutton' onClick={uploadimage}>Upload</button></div>
+    </div>}
     </div>
   )
 }

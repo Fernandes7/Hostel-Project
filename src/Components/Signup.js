@@ -9,17 +9,19 @@ function Signup() {
     }
     const passdata=()=>{
       axios.post("http://localhost:8000/signup",{data}).then((responce)=>{
-        if(responce)
+        if(responce.data.username)
         {
           alert("Please Login using your created fields")
           history("/login")
         }
+        else
+        alert("This Email has Already Signin......")
       })
     }
   return (
     <div className='loginbody'>
       <div className='logindiv'>
-        <img src="https://images.unsplash.com/photo-1617098900591-3f90928e8c54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGJlZCUyMHJvb218ZW58MHx8MHx8&w=1000&q=80" alt="loginimage" className='loginimage'></img>
+        <img src="https://images.unsplash.com/photo-1617098900591-3f90928e8c54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGJlZCUyMHJvb218ZW58MHx8MHx8&w=1000&q=80" alt="loginimage" className='loginimages'></img>
         <div className='inputdiv'>
         <h2>Welcome Hosteler</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>

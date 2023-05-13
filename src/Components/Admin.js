@@ -19,6 +19,7 @@ function Admin() {
         <input type="text" placeholder="Hostel image" name="hostelimage" onChange={handle}></input>
         <input type="text" placeholder="Hostel location" name="location" onChange={handle}></input>
         <input type="text" placeholder="Main Loction" name="mainlocation" onChange={handle}></input>
+        <input type="Number" placeholder="Distance From Main Location" name="distancefrommailocation" onChange={handle}></input>
         <input type="number" placeholder="Cost per month" name="price" onChange={handle}></input>
         <input type="number" placeholder="Cost without food" name="pricewithoutfood" onChange={handle}></input>
         <input type="text" placeholder="hosteltype eg:Men or Women" name="hosteltype" onChange={handle}></input>

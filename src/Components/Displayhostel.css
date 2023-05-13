@@ -9,6 +9,7 @@
     background: rgb(222,254,253);
     background: linear-gradient(90deg, rgba(222,254,253,1) 0%, rgb(129, 177, 248) 100%);
     padding: 10px;
+    position: relative;
 }
 .hostelwrap img{
     width:300px;
@@ -18,6 +19,9 @@
      -moz-box-shadow: 10px 10px 14px -9px rgba(3,3,3,1);
      box-shadow: 10px 10px 14px -9px rgba(3,3,3,1);
      margin-right: 10px;
+     display:flex;
+     align-items: center;
+     justify-content: center;
 }
 .hostelwrap img:hover{
     scale:calc(1.03)
@@ -26,6 +30,35 @@
     padding-left: 10px;
     margin-top:-20px;
     font-family: 'Inter Tight', sans-serif;
+    width:450px;
+}
+.ratewithfavdiv{
+    display:flex;
+    gap:180px;
+}
+.ratewithfavdiv div{
+ margin-top: 80px; 
+ font-family: 'Gentium Plus', serif;
+ display:flex;
+ justify-content: center;
+ align-items: center;
+}
+.ratewithfavdiv p{
+    margin-right: 20px;
+}
+.unvalibleh4content{
+    position:absolute;
+    left:80px;
+    color:rgb(195, 222, 245);
+}
+.unavilablewrap{
+    position: absolute;
+    width:820px;
+    height: 220px;
+    background: rgba(255, 0, 0, 0.25);
+    top:0px;
+    left:0px;
+    border-radius: 10px;
 }
 .hostelcontent h3{
     font-family: 'Gentium Plus', serif;
@@ -34,6 +67,28 @@
 .hostelcontent h4{
     margin-top: 80px;
     font-family: 'Gentium Plus', serif;
+}
+.hostelcontent p{
+    text-align: left;
+}
+.locationcontentdiv div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.ptagfordistancefrommainloaction{
+    font-size: 12px;
+    margin-left:200px;
+    color:rgb(140, 4, 8);
+}
+.locationcontent{
+font-family: 'Gentium plus';
+}
+.locationcontentdiv{
+    display:flex;
+    gap:5px;
+    align-items: center;
+    margin-top: 10px;
 }
 .hostelrow{
     width:100%;

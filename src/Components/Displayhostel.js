@@ -1,6 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
+import {GoLocation} from "react-icons/go"
+import {FaRegHeart,FaHeart} from "react-icons/fa"
+import {BsPerson} from "react-icons/bs"
+import {GiHandheldFan} from "react-icons/gi"
 import "./Displayhostel.css"
 function Displayhostel(props) {
 const history =useNavigate()
@@ -40,29 +44,55 @@ hostelarray= !displaysort ? datas.filter((data)=>{
   
 })
 let hostel=hostelarray.map((item)=>{
-  if(item.Availableroom>10)
+  let likeenable=false;
+  const like=()=>{
+    likeenable=true
+  }
+  if(item.Availableroom>1)
   return(
     <div className='hostelmaindiv'>
-      <div className='hostelwrap' onClick={()=>history("/sh",{state:{user:props.userid.data,hostel:item}})}>
+      <div className='hostelwrap'>
         <img src={item.hostelimage} alt="img"></img>
-        <div className='hostelcontent'>
+        <div className='hostelcontent' onClick={()=>history("/sh",{state:{user:props.userid.data,hostel:item}})}>
         <h3>{item.hostelname}</h3>
         <p>{item.description}</p>
-        <h4>Rate {item.price}</h4>
+        <div className='locationcontentdiv'>
+        <div><GoLocation />
+        <p className='locationcontent'>{item.location}</p>
         </div>
+        <p className='ptagfordistancefrommainloaction'>42km from {item.mainlocation}</p>
+        </div>
+        <div className='ratewithfavdiv'>
+        <h4>Rate {item.price} Rs/Month</h4>
+        <div>
+        <GiHandheldFan />
+        <p>{item.Ac}</p>
+        <BsPerson />
+        <p>{item.hosteltype}</p>
+        </div>
+        </div>
+        </div>
+        {!likeenable?<FaRegHeart onClick={()=>console.log(item)}/>:<FaHeart />}
       </div>
     </div>
   )
   else
   return(
   <div className='hostelmaindiv'>
-  <div className='hostelwrap' onClick={()=>history("/sh",{state:{user:props.userid.data,hostel:item}})}>
+  <div className='hostelwrap'>
     <img src={item.hostelimage} alt="img"></img>
     <div className='hostelcontent'>
+    <div className='unavilablewrap'></div>
+    <h4 className='unvalibleh4content'>Currently Unaviable</h4>
     <h3>{item.hostelname}</h3>
     <p>{item.description}</p>
-    <p>Currently Unavailable    </p>
-    <h4>Rate {item.price}</h4>
+    <div className='locationcontentdiv'>
+        <div><GoLocation />
+        <p className='locationcontent'>{item.location}</p>
+        </div>
+        <p className='ptagfordistancefrommainloaction'>42km from {item.mainlocation}</p>
+        </div>
+    <h4>Rate {item.price}Rs/Month</h4>
     </div>
   </div>
 </div>)
@@ -98,7 +128,19 @@ const sort=(no)=>{
           <div className='hostelcontent'>
           <h3>{item.hostelname}</h3>
           <p>{item.description}</p>
+          <div className='locationcontentdiv'>
+          <div><GoLocation />
+          <p className='locationcontent'>{item.location}</p>
+          </div>
+          <p className='ptagfordistancefrommainloaction'>42km from {item.mainlocation}</p>
+          </div>
           <h4>Rate {item.price}</h4>
+          <div>
+        <GiHandheldFan />
+        <p>{item.Ac}</p>
+        <BsPerson />
+        <p>{item.hosteltype}</p>
+        </div>
           </div>
         </div>
       </div>

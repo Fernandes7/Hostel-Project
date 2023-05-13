@@ -1,8 +1,8 @@
 .leaflet-container{
     width:400px;
-    height:400px;
+    height:350px;
     position: absolute;
-    bottom: 0px;
+    bottom: 10px;
     border-radius: 10px;
 }
 .mappopupcontent{

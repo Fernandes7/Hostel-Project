@@ -14,6 +14,8 @@ const [sortenable,Setsortenable]=useState(false)
 const [options,setOptions]=useState({})
 const [sorted,setSorted]=useState()
 const [displaysort,setDisplaysort]=useState(false)
+const [favdatarray,setFavdataarray]=useState([])
+let likeenable=false;
 useEffect(()=>{
 axios.get("http://localhost:8000/fetchhotel").then((responce)=>{
   console.log(responce.data)
@@ -22,6 +24,9 @@ axios.get("http://localhost:8000/fetchhotel").then((responce)=>{
 },[])
 const handle=(e)=>{
   setOptions({...options,[e.target.name]:e.target.value})
+}
+const addfavid=(item)=>{
+setFavdataarray([...favdatarray,item._id])
 }
 let hostelarray
 hostelarray= !displaysort ? datas.filter((data)=>{
@@ -44,10 +49,6 @@ hostelarray= !displaysort ? datas.filter((data)=>{
   
 })
 let hostel=hostelarray.map((item)=>{
-  let likeenable=false;
-  const like=()=>{
-    likeenable=true
-  }
   if(item.Availableroom>1)
   return(
     <div className='hostelmaindiv'>
@@ -63,7 +64,7 @@ let hostel=hostelarray.map((item)=>{
         <p className='ptagfordistancefrommainloaction'>42km from {item.mainlocation}</p>
         </div>
         <div className='ratewithfavdiv'>
-        <h4>Rate {item.price} Rs/Month</h4>
+        <h4 onClick={()=>console.log("pleaseeelookhere",favdatarray)}>Rate {item.price} Rs/Month</h4>
         <div>
         <GiHandheldFan />
         <p>{item.Ac}</p>
@@ -72,7 +73,7 @@ let hostel=hostelarray.map((item)=>{
         </div>
         </div>
         </div>
-        {!likeenable?<FaRegHeart onClick={()=>console.log(item)}/>:<FaHeart />}
+        {!likeenable?<FaRegHeart onClick={()=>addfavid(item)}/>:<FaHeart />}
       </div>
     </div>
   )
@@ -115,7 +116,6 @@ const filters=()=>{
 const close=()=>{
   setFilterenable(false)
   Setsortenable(false)
-  console.log("close")
 }
 let sorteddata;
 const sort=(no)=>{
@@ -134,12 +134,14 @@ const sort=(no)=>{
           </div>
           <p className='ptagfordistancefrommainloaction'>42km from {item.mainlocation}</p>
           </div>
-          <h4>Rate {item.price}</h4>
+          <div className='ratewithfavdiv'>
+          <h4>Rate {item.price}Rs/Month</h4>
           <div>
         <GiHandheldFan />
         <p>{item.Ac}</p>
         <BsPerson />
         <p>{item.hosteltype}</p>
+        </div>
         </div>
           </div>
         </div>

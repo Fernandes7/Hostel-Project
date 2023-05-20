@@ -10,6 +10,7 @@ import { Usercontext } from './Components/Usercontext';
 import { useState } from 'react';
 import Profile from './Components/Profile'
 import Profileupdate from './Components/profileupdate';
+import AdminPage from './Components/AdminPage';
 function App() {
 const [userid,setUserid]=useState("")
   return (
@@ -17,7 +18,8 @@ const [userid,setUserid]=useState("")
     <Usercontext.Provider value={{userid,setUserid}}>
       <Router>
         <Routes>
-        <Route element={<Admin />}  path='/admin' />
+        <Route element={<Admin />}  path='/admin'></Route>
+        <Route element={<AdminPage />} path="/adminpage"></Route>
         <Route element={<Startpage />} path="/"></Route>
         <Route element={<Login />} path="/login"></Route>
         <Route element={<Signup />} path="/signup"></Route>

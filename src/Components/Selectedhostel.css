@@ -1,0 +1,47 @@
+.selectmaindivfistinner{
+    width:70%;
+    height: 90%;
+    background: rgb(219,228,230);
+    background: linear-gradient(90deg, rgba(188,206,226,1) 0%, rgba(188,206,226,1) 100%);
+    position:absolute;
+    border-radius: 20px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.selectmainleftmain{
+    width:60%;
+    height: 100%;
+    border-radius: 10px;
+    position:absolute;
+    top:0px;
+    left:30px;
+    background: rgb(232,247,251);
+    background: linear-gradient(90deg, rgba(232,247,251,1) 0%, rgba(212,228,245,1) 100%);
+}
+.selectmainrightmain{
+    width:40%;
+    height: 90%;
+    position: absolute;
+    top:5%;
+    right:5%;
+    background: rgb(192,239,250);
+    border-radius: 20px;
+background: linear-gradient(90deg, rgba(192,239,250,1) 0%, rgba(226,232,240,1) 100%);
+box-shadow: -9px 10px 22px 0px rgba(0,0,0,0.27);
+-webkit-box-shadow: -9px 10px 22px 0px rgba(0,0,0,0.27);
+-moz-box-shadow: -9px 10px 22px 0px rgba(0,0,0,0.27);
+}
+.selectedbgimg{
+    width:90%;
+    height: 95%;
+    border-radius: 10px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    box-shadow: -9px 10px 22px 0px rgba(0,0,0,0.27);
+-webkit-box-shadow: -9px 10px 22px 0px rgba(0,0,0,0.27);
+-moz-box-shadow: -9px 10px 22px 0px rgba(0,0,0,0.27);
+filter: brightness(70%);
+}

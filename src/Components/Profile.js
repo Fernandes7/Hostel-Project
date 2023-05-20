@@ -75,7 +75,7 @@ function Profile() {
         :</p>
         <p className='profiledatadivdata'>{profile.state.profile.email}</p>
         </div>
-        <button onClick={()=>history("/profileupdate",{state:{profile:profile.state.profile}})}>Update</button>
+        <button onClick={()=>history("/profileupdate",{state:{profile:profile.state.profile}})}>Edit Profile</button>
         <button onClick={()=>history("/account",{state:{data:profile.state.profile}})}>Cancel</button>
         </div>:!profile.state.profile.contactno ? <p className='profiledatadivdata profiledatadiv'>You didn't have Added Additional User details </p>:<div className='profiledatawrapdiv'>
         <div className='profiledatadiv'>
@@ -106,7 +106,7 @@ function Profile() {
         <p>Company or College Name :</p>
         <p className='profiledatadivdata'>{profile.state.profile.workplace}</p>
         </div>
-        <button className='detailbutton' onClick={()=>history("/profileupdate",{state:{profile:profile.state.profile}})}>Update</button>
+        <button className='detailbutton' onClick={()=>history("/profileupdate",{state:{profile:profile.state.profile}})}>Edit Profile</button>
         <button className='detailbutton' onClick={()=>history("/account",{state:{data:profile.state.profile}})}>Cancel</button>
         </div>}
     </div>

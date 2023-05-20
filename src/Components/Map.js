@@ -9,7 +9,7 @@ import L from "leaflet"
 function Map(props) {
   const [currentlocationenable,setCurrentlocationenable]=useState(false)
   const icon=new Icon({
-    iconUrl:"https://cdn-icons-png.flaticon.com/512/5836/5836608.png",
+    iconUrl:"https://cdn-icons-png.flaticon.com/128/4985/4985836.png",
     iconSize:[40,40]
   })
   const currentloactionicon=new Icon({
@@ -37,7 +37,7 @@ function Map(props) {
   )}
   {currentlocationenable &&<MapRouting hlat={props.hostel.lat} hlng={props.hostel.lng} clat={location.coordinates.lat} clng={location.coordinates.lng}></MapRouting>}
 </MapContainer>
-<button onClick={()=>setCurrentlocationenable(true)}>See Your location</button>
+<button onClick={()=>setCurrentlocationenable(true)} className='currentlocationbutton'>See Your location</button>
     </div>
   )
 }

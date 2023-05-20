@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {CgProfile} from "react-icons/cg"
 import {CiLogout} from "react-icons/ci"
 import {FaRegUser,FaUserEdit} from "react-icons/fa"
+import {BsPersonWorkspace} from "react-icons/bs"
 import { Outlet, useLocation, useNavigate } from 'react-router'
 import "./Account.css"
 import "./Displayhostel"
@@ -26,7 +27,7 @@ function Account() {
       <div className='accountnavbar'>
         <img src={logo} alt="logo"></img>
         <div className='navright'>
-        <p>Hello, {userdata.state.data.username}</p>
+        <p>{userdata.state.data.isadmin ?"Hello Admin,":"Hello"} {userdata.state.data.username}</p>
         <CgProfile className='accountlogo' onClick={profile}/>
         </div>
       </div>
@@ -37,7 +38,7 @@ function Account() {
         <FaRegUser />
         <p>Your Profile</p>
       </div>
-      <div className='innerprofilediv'>
+      <div className='innerprofilediv' onClick={()=>history("/profileupdate" ,{state:{profile:userdata.state.data}})}>
         <FaUserEdit />
         <p>Edit Profile</p>
       </div>
@@ -45,6 +46,10 @@ function Account() {
         <CiLogout />
         <p>Logout</p>
       </div>
+      {userdata.state.data.isadmin && <div className='innerprofilediv' onClick={()=>history("/adminpage")}>
+        <BsPersonWorkspace/>
+        <p>Admin Panel</p>
+      </div>  }
       </div>
       <Outlet/>
     </div>

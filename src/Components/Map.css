@@ -1,8 +1,9 @@
 .leaflet-container{
-    width:400px;
-    height:350px;
+    width:300px;
+    height:250px;
     position: absolute;
-    bottom: 10px;
+    bottom: 40px;
+    left:10px;
     border-radius: 10px;
 }
 .mappopupcontent{
@@ -19,4 +20,20 @@
 }
 p{
     text-align: center;
+}
+.currentlocationbutton{
+position: absolute;
+bottom:5px;
+width:150px;
+left:75px;
+height: 30px;
+border-radius:20px;
+border:none;
+background: rgb(53,155,235);
+background: linear-gradient(90deg, rgba(53,155,235,1) 0%, rgba(136,192,236,1) 50%, rgba(35,136,215,1) 100%);
+font-family: 'Lobster', cursive;
+color:rgb(2, 14, 43);
+}
+.currentlocationbutton:hover{
+    scale:calc(1.02)
 }

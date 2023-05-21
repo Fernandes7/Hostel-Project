@@ -15,7 +15,8 @@ const [options,setOptions]=useState({})
 const [sorted,setSorted]=useState()
 const [displaysort,setDisplaysort]=useState(false)
 const [favdatarray,setFavdataarray]=useState([])
-let likeenable=false;
+const [favdivenable,setFavdiv]=useState(false)
+const [fetchedfavdata,setFecthedfavdata]=useState()
 useEffect(()=>{
 axios.get("http://localhost:8000/fetchhotel").then((responce)=>{
   console.log(responce.data)
@@ -25,8 +26,16 @@ axios.get("http://localhost:8000/fetchhotel").then((responce)=>{
 const handle=(e)=>{
   setOptions({...options,[e.target.name]:e.target.value})
 }
-const addfavid=(item)=>{
-setFavdataarray([...favdatarray,item._id])
+const favdivfunction=()=>{
+  setFavdiv(true)
+  axios.get(`http://localhost:8000/fetchfavhotel/${props.userid.data._id}`).then((responce)=>{
+    console.log("favdata",responce)
+    setFecthedfavdata(responce.data)
+  })
+}
+const addfavid=async(item)=>{
+favdatarray.includes(item._id) ?setFavdataarray(favdatarray.filter((value)=>value!==item._id)):setFavdataarray([...favdatarray,item._id])
+axios.post(`http://localhost:8000/favhotel/${props.userid.data._id}`,{data:[item._id]}).then((responce)=>console.log("backs",responce))
 }
 let hostelarray
 hostelarray= !displaysort ? datas.filter((data)=>{
@@ -73,7 +82,7 @@ let hostel=hostelarray.map((item)=>{
         </div>
         </div>
         </div>
-        {!likeenable?<FaRegHeart onClick={()=>addfavid(item)}/>:<FaHeart />}
+        {favdatarray.includes(item._id)?<FaHeart onClick={()=>addfavid(item)}/>:<FaRegHeart onClick={()=>addfavid(item)}/>}
       </div>
     </div>
   )
@@ -156,6 +165,7 @@ const sort=(no)=>{
     <div className='displayoptions'>
     <p className='resulttext'>Results Shown ........</p>
     <div className='displaybuttondiv'>
+      <button onClick={favdivfunction}>Liked</button>
       <button onClick={filter}>Sort</button>
       <button onClick={sortfunction}>Filter</button>
     </div>
@@ -184,6 +194,20 @@ const sort=(no)=>{
       </div>
     </div>}
     <div className='hostelrow' onClick={close}>{props.sortenable ? sorted : hostel}</div>
+    {favdivenable && <div className='favdivwrap'>
+    <img src="https://cdn-icons-png.flaticon.com/256/10449/10449858.png" className='closeoffavimage' onClick={()=>setFavdiv(false)} alt="close"></img>
+      {fetchedfavdata ? fetchedfavdata.map((item)=>{
+        return(
+          <div className='divofmappedfavdata'>
+            <img src={item.hostelimage} alt="images"></img>
+            <div>
+              <h3>{item.hostelname}</h3>
+              <h6>Rs {item.price}/Month</h6>
+            </div>
+          </div>
+        )
+      }):<h5 className='deafultfavtext'>You Currenty Didnt have Favorite Hostel</h5>}
+    </div>}
     </div>
   )
 }

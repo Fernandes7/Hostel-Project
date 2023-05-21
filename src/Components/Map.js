@@ -26,8 +26,11 @@ function Map(props) {
   />
   <Marker position={[props.hostel.lat,props.hostel.lng]} icon={icon}>
     <Popup>
+      <div className='mapwrapdiv'>
       <img className='hotelimagesinmap' src={props.hostel.hostelimage} alt="hotelimagesinmap"></img>
       <p className='mappopupcontent'>{props.hostel.hostelname}</p>
+      <p>42km from {props.hostel.mainlocation}</p>
+      </div>
     </Popup>
   </Marker>
   {currentlocationenable && location.loaded && !location.error &&(

@@ -81,6 +81,7 @@
     margin-left:200px;
     color:rgb(140, 4, 8);
 }
+
 .locationcontent{
 font-family: 'Gentium plus';
 }
@@ -208,4 +209,57 @@ font-family: 'Gentium plus';
     gap:10px;
     font-family: 'Satisfy', cursive;
     transition: all 1s; 
+}
+.heartcolor{
+    background: white;
+}
+.favdivwrap{
+    width:500px;
+   background: rgba(118, 246, 253, 0.25);
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+    position: absolute;
+    top:180px;
+    left:50%;
+    transform: translate(-50%);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+.divofmappedfavdata{
+    width:400px;
+    height:100px;
+    display:flex;
+    background: rgba(239, 233, 245, 0.685);
+    background: radial-gradient(circle, rgba(239,233,245,1) 0%, rgba(205,231,233,1) 80%); 
+    border-radius: 10px;
+    align-items: center;
+}
+.divofmappedfavdata img{
+    width:150px;
+    height: 90px;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+.divofmappedfavdata div{
+    margin-left: 10px;
+    font-family: 'Satisfy', cursive;
+}
+.closeoffavimage{
+    width:35px;
+    height: 35px;
+    position: absolute;
+    top:2%;
+    right:2%;
+}
+.deafultfavtext{
+font-family: 'Gentium Plus', cursive;
 }

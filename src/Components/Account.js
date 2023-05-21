@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import {CgProfile} from "react-icons/cg"
 import {CiLogout} from "react-icons/ci"
 import {FaRegUser,FaUserEdit} from "react-icons/fa"
 import {BsPersonWorkspace} from "react-icons/bs"
@@ -25,10 +24,10 @@ function Account() {
   return (
     <div className='blackbody'>
       <div className='accountnavbar'>
-        <img src={logo} alt="logo"></img>
+        <img src={logo} alt="logo" className='accountnavbarimage'></img>
         <div className='navright'>
         <p>{userdata.state.data.isadmin ?"Hello Admin,":"Hello"} {userdata.state.data.username}</p>
-        <CgProfile className='accountlogo' onClick={profile}/>
+        <img src="https://cdn-icons-png.flaticon.com/128/10813/10813449.png" className='accountlogo' onClick={profile} alt="profileimage"></img>
         </div>
       </div>
       {location ? <Displayhostel location={location} userid={userdata.state} setSortenable={setSortenable} sortenable={sortenable}/> :<Accountloader />}

@@ -37,3 +37,15 @@ color:rgb(2, 14, 43);
 .currentlocationbutton:hover{
     scale:calc(1.02)
 }
+.mapwrapdiv{
+    width:150px;
+    height: 160px;
+    font-family: 'Lobster Two', cursive;
+    padding:10px;
+    background: rgba(217, 223, 235, 0.25);
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}

@@ -27,7 +27,7 @@ function Account() {
         <img src={logo} alt="logo" className='accountnavbarimage'></img>
         <div className='navright'>
         <p>{userdata.state.data.isadmin ?"Hello Admin,":"Hello"} {userdata.state.data.username}</p>
-        <img src="https://cdn-icons-png.flaticon.com/128/10813/10813449.png" className='accountlogo' onClick={profile} alt="profileimage"></img>
+        <img src="https://cdn-icons-png.flaticon.com/128/10813/10813409.png" className='accountlogo' onClick={profile} alt="profileimage"></img>
         </div>
       </div>
       {location ? <Displayhostel location={location} userid={userdata.state} setSortenable={setSortenable} sortenable={sortenable}/> :<Accountloader />}

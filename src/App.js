@@ -11,6 +11,7 @@ import { useState } from 'react';
 import Profile from './Components/Profile'
 import Profileupdate from './Components/profileupdate';
 import AdminPage from './Components/AdminPage';
+import Booksucces from './Components/Booksucces';
 function App() {
 const [userid,setUserid]=useState("")
   return (
@@ -27,6 +28,7 @@ const [userid,setUserid]=useState("")
         <Route element={<Selectedhotel />} path="/sh"></Route>
         <Route element={<Profile />} path="/profile"></Route>
         <Route element={<Profileupdate />} path="/profileupdate"></Route>
+        <Route element={<Booksucces />} path="/booksuccess"></Route>
         </Routes>
       </Router>
       </Usercontext.Provider>

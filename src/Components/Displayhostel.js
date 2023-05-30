@@ -129,7 +129,7 @@ const close=()=>{
 let sorteddata;
 const sort=(no)=>{
  sorteddata=hostelarray.sort((a,b)=>a.price>b.price ?  no===1 ? 1:-1 : no===1 ? -1:1)
- let sorteddisplay=sorteddata.map((item)=>{
+ let sorteddisplay=(sorteddata).map((item)=>{
     return(
       <div className='hostelmaindiv'>
         <div className='hostelwrap' onClick={()=>history("/sh",{state:{user:props.userid.data,hostel:item}})}>
@@ -171,8 +171,9 @@ const sort=(no)=>{
     </div>
     </div>
       <div className={filterenable ?'filterdiv':'filterdivoff'}>
-      <p onClick={()=>sort(1)}>Low price to High</p>
-      <p onClick={()=>sort(2)}>High price to Low</p>
+      <h3>Price</h3>
+      <p onClick={()=>sort(1)}>Low to High</p>
+      <p onClick={()=>sort(2)}>High to Low</p>
     </div>
     {sortenable && <div className='sortdiv'>
       <div className='sorttoinnerdiv'>

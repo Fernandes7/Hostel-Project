@@ -30,9 +30,12 @@ height: 30px;
 border-radius:20px;
 border:none;
 background: rgb(53,155,235);
-background: linear-gradient(90deg, rgba(53,155,235,1) 0%, rgba(136,192,236,1) 50%, rgba(35,136,215,1) 100%);
+background: linear-gradient(90deg, rgb(180, 215, 241) 0%, rgba(136,192,236,1) 50%, rgb(190, 226, 251) 100%);
 font-family: 'Lobster', cursive;
 color:rgb(2, 14, 43);
+-webkit-box-shadow: 10px 10px 14px -10px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 14px -10px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 14px -10px rgba(0,0,0,0.75);
 }
 .currentlocationbutton:hover{
     scale:calc(1.02)

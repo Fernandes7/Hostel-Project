@@ -9,6 +9,7 @@ function Admin() {
   const submit=()=>{
     axios.post("http://localhost:8000/addhostel",{data}).then((responce)=>{
         console.log(responce)
+        alert("Hostel Data Submited")
     })
   }
   return (

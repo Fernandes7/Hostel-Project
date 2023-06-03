@@ -16,7 +16,7 @@ function Booksucces() {
          <h3>You have Successfully Booked the {data.state.data.hostel.hostelname} Hostel</h3>
          <p className='tahnkyoup'>Thank You</p>
          <button onClick={Gotoaccountfuction}>Go to Home Page</button>
-         <p className='pofbook'>Your Booking Id is:</p>
+         <p className='pofbook'>Your Booking Id is below:</p>
          <p className='pofbook'>{data.state.data.user._id}</p>
         </div>
     </div>

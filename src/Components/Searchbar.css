@@ -8,24 +8,35 @@
 }
 .searchbar input{
     width:300px;
-    height:40px;
-    font-family: poppins;
-    background:white;
-    border:none;
+    height:30px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    background:rgb(0, 0, 0);
+    border:1px solid rgb(241, 243, 255);
     border-radius: 5px;
     margin-left:10px;
     padding-left:10px;
-    margin-top: 20px;
+    color:White;
+}
+.searchbar img{
+   width:30px;
+   height: 30px;
+   margin-left:10px;
+}
+.positionsearch{
+   display: flex;
+   align-items: center;
+   margin-top: 10px;
 }
  .searchbar button{
-    width:100px;
+    width:70px;
     height: 40px;
     margin-left:50px;
     border-radius:10px;
-    border:none;
-    background: rgb(255, 255, 255);
+    border:2px solid rgb(242, 242, 247);
+    color:white;
+    background: rgb(18, 1, 1);
     font-weight:600;
-    font-family: 'Inter Tight', sans-serif;
+    font-family:arapey;
  }
  .options{
     margin-left: 10px;

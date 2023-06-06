@@ -33,6 +33,12 @@ const favdivfunction=()=>{
     setFecthedfavdata(responce.data)
   })
 }
+const deletefavfunc=(id)=>{
+  axios.post(`http://localhost:8000/deletefav/${props.userid.data._id}`,{data:id}).then((responce)=>{
+    if(responce)
+    favdivfunction()
+  })
+}
 const addfavid=async(item)=>{
 favdatarray.includes(item._id) ?setFavdataarray(favdatarray.filter((value)=>value!==item._id)):setFavdataarray([...favdatarray,item._id])
 axios.post(`http://localhost:8000/favhotel/${props.userid.data._id}`,{data:[item._id]}).then((responce)=>console.log("backs",responce))
@@ -163,7 +169,7 @@ const sort=(no)=>{
   return (
     <div className='displaymain'>
     <div className='displayoptions'>
-    <p className='resulttext'>Results Shown ........</p>
+    <p className='resulttext'>Results Shown for {props.location} ........</p>
     <div className='displaybuttondiv'>
       <button onClick={favdivfunction}>Liked</button>
       <button onClick={filter}>Sort</button>
@@ -197,14 +203,15 @@ const sort=(no)=>{
     <div className='hostelrow' onClick={close}>{props.sortenable ? sorted : hostel}</div>
     {favdivenable && <div className='favdivwrap'>
     <img src="https://cdn-icons-png.flaticon.com/256/10449/10449858.png" className='closeoffavimage' onClick={()=>setFavdiv(false)} alt="close"></img>
-      {fetchedfavdata ? fetchedfavdata.map((item)=>{
+      {(fetchedfavdata && fetchedfavdata.length>0) ? fetchedfavdata.map((item)=>{
         return(
           <div className='divofmappedfavdata'>
-            <img src={item.hostelimage} alt="images"></img>
-            <div>
+            <img src={item.hostelimage} alt="images" className='divofmappedfavdataimg'></img>
+            <div onClick={()=>history("/sh",{state:{user:props.userid.data,hostel:item}})}>
               <h3>{item.hostelname}</h3>
               <h6>Rs {item.price}/Month</h6>
             </div>
+            <img src="https://cdn-icons-png.flaticon.com/128/10374/10374182.png" alt="delete" className='deletefabutton' onClick={()=>deletefavfunc(item._id)}></img>
           </div>
         )
       }):<h5 className='deafultfavtext'>You Currenty Didnt have Favorite Hostel</h5>}

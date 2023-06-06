@@ -11,6 +11,7 @@ function Admin() {
         console.log(responce)
         alert("Hostel Data Submited")
     })
+    console.log(data)
   }
   return (
     <div className='main'>
@@ -37,7 +38,17 @@ function Admin() {
         <input type="text" placeholder="Wifi availabilty" name="Wifi" onChange={handle}></input>
         <input type="number" placeholder="Latitude" name="lat" onChange={handle}></input>
         <input type="number" placeholder="Longitude" name="lng" onChange={handle}></input>
-    </div>
+        {(data.customiseservice==="true") && <div className='divofoptioninput'>
+          <input type="text" placeholder="Reduction price Without Food" name="nofood" onChange={handle}></input>
+        <input type="number" placeholder="Reduction Price Without Ironing" name="noironing" onChange={handle}></input>
+        <input type="number" placeholder="Reduction Price Without Washing" name="nowash" onChange={handle}></input>
+        </div>}
+        </div>
+        <div className='radiodiv'><p>Customise Option</p>
+        <div className='divofdiv'><input type="radio"  name="customiseservice" onChange={handle} value={true} className='radioinput'></input>
+        <p>Yes</p></div>
+        <div className='divofdiv'><input type="radio"  name="customiseservice" onChange={handle} value={false}></input>
+        <p>No</p></div></div>
     <button onClick={submit}>SUBMIT</button>
     </div>
   )

@@ -9,20 +9,24 @@ import { GoPerson } from "react-icons/go"
 import Map from './Map'
 import { useState } from "react"
 import axios from "axios"
+import ReactSwitch from "react-switch"
 function Selectedhotel() {
   const history=useNavigate()
   const data=useLocation()
+  const [togglecheckarray,setTogglecheckarray]=useState([])
   const [enableservice,setEnableservice]=useState(false)
+  const [hostelprice,setHostelPrice]=useState(data.state.hostel.price)
   const [enablebooking,setEnablebooking]=useState(false)
   const [bookingdata,setBookingdata]=useState({Bookeduserid:"",Bookedhostelid:"",Noofrooms:""})
   const [Noofroom,setNoofroom]=useState(1)
   const amenty=data.state.hostel.amenities.split(",")
   const nearbyplace=["Kadamakudi View Point","Salt Resturent","Bus Stand","Edappaly Church","Kochi Metro Rail"]
+  const services=["iron","wash","food"]
   console.log("mappeddata",data.state)
   const bookingfunction=()=>{
   setEnableservice(false)
   setEnablebooking(true)
-  setBookingdata({Bookeduserid:data.state.user._id,Bookedhostelid:data.state.hostel,Noofrooms:Noofroom})
+  setBookingdata({Bookeduserid:data.state.user._id,Bookedhostelid:data.state.hostel,Noofrooms:Noofroom,Bookingprice:hostelprice,customise:data.state.hostel.price===hostelprice ?false :true})
   }
   const servicefunction=()=>{
   setEnableservice(true) 
@@ -38,7 +42,31 @@ function Selectedhotel() {
     setNoofroom(Noofroom-1)
     setBookingdata({...bookingdata,Noofrooms:Noofroom>1 ?Noofroom-1:Noofroom})
   }
+  const togglehandle=(key,item)=>{
+    if(togglecheckarray.includes(key))
+    {
+      setTogglecheckarray(togglecheckarray.filter((item)=>item!==key))
+      if(item==="iron")
+      setHostelPrice(hostelprice+data.state.hostel.noironing)
+      if(item==="wash")
+      setHostelPrice(hostelprice+data.state.hostel.nowash)
+      if(item==="food")
+      setHostelPrice(hostelprice+data.state.hostel.nofood)
+    }
+    else
+    {
+      setTogglecheckarray([...togglecheckarray,key])
+      if(item==="iron")
+      setHostelPrice(hostelprice-data.state.hostel.noironing)
+      if(item==="wash")
+      setHostelPrice(hostelprice-data.state.hostel.nowash)
+      if(item==="food")
+      setHostelPrice(hostelprice-data.state.hostel.nofood)
+      console.log('price',hostelprice)
+    }
+  }
   const conformbookingfunction=()=>{
+    console.log("bookdata",bookingdata)
     if(data.state.user.contactno)
     {
     axios.post("http://localhost:8000/addbooking",{data:bookingdata}).then((responce)=>{
@@ -58,6 +86,9 @@ function Selectedhotel() {
     alert("Please Fill the Your details in Profile ,Then Book the Hostel")
     history("/profileupdate",{state:{profile:data.state.user}})
     }
+  }
+  const customisefunction=()=>{
+    setEnableservice(false)
   }
   return (
     <div className="selectmaindiv">
@@ -167,8 +198,9 @@ function Selectedhotel() {
     <div className="line"></div>
     <div className="selctedhotelpricemaindiv">
       <div className="booksmalldiv">
-      <h3>Rs {data.state.hostel.price}/Month</h3>
-      <p>Including All Taxes</p>
+      <h3>Rs {hostelprice} Rs/Month</h3>
+      <p>Including All Taxes</p> 
+      {hostelprice!==data.state.hostel.price && <p className="servicecust">Services Customized Price</p>}
       </div>
       <div className="booksmalldivleft">
       <div><BsPerson />
@@ -183,7 +215,48 @@ function Selectedhotel() {
    </div>
    {enableservice && <div className="divofviewservice">
     <div className="serviceborder">
-    <img src="https://cdn-icons-png.flaticon.com/128/2732/2732657.png" alt="close"onClick={()=>setEnableservice(false)}></img>
+    <img src="https://cdn-icons-png.flaticon.com/128/2732/2732657.png" alt="close"onClick={()=>setEnableservice(false)} className="serviceborderimg"></img>
+    <div>
+    <h3 className="customizehead">Customize services</h3>
+    <p className="pofcustomixe">Select the Option that you need</p>
+    {services.map((item,key)=>{
+      if(item==="iron")
+      return(
+      <div className="cutomizeoptdiv">
+     <div className="warpofeachservice">
+      <img src="https://cdn-icons-png.flaticon.com/128/79/79677.png" alt="service" className="imageserviceofdiv"></img>
+      <p className="ptag">Irons</p>
+      <ReactSwitch checked={togglecheckarray.includes(key)?false :true}  onChange={()=>togglehandle(key,item)}className="toggle" key={key}/>
+     </div>
+     <p className="reductionp">Reduction -{data.state.hostel.noironing}rs/month</p>
+    </div>
+      )
+      else if(item==="food")
+      return(
+      <div className="cutomizeoptdiv">
+     <div className="warpofeachservice">
+      <img src="https://cdn-icons-png.flaticon.com/128/79/79677.png" alt="service" className="imageserviceofdiv"></img>
+      <p className="ptag">Food</p>
+      <ReactSwitch checked={togglecheckarray.includes(key)?false :true}  onChange={()=>togglehandle(key,item)} className="toggle" key={key}/>
+     </div>
+     <p className="reductionp">Reduction -{data.state.hostel.nofood}rs/month</p>
+    </div>
+      )
+      else
+      return(
+        <div className="cutomizeoptdiv">
+     <div className="warpofeachservice">
+      <img src="https://cdn-icons-png.flaticon.com/128/79/79677.png" alt="service" className="imageserviceofdiv"></img>
+      <p className="ptag">wash</p>
+      <ReactSwitch checked={togglecheckarray.includes(key)?false :true}  onChange={()=>togglehandle(key,item)} className="toggle" key={key}/>
+     </div>
+     <p className="reductionp">Reduction -{data.state.hostel.nowash}rs/month</p>
+    </div>
+      )
+    })}
+    </div>
+    <p className="priceinadjust">Customised Price :{hostelprice}rs/Month</p>
+    <button className="conformservicebutton" onClick={customisefunction}>Conform Customise Services</button>
     </div>
    </div>}
    {enablebooking && <div className="bookingenablediv">
@@ -191,7 +264,7 @@ function Selectedhotel() {
    <img src={data.state.hostel.hostelimage} alt="images" className="bookimage"></img>
    <h3>{data.state.hostel.hostelname}</h3>
    <div className="bookingenableinnerflex">
-   <h4>Price {data.state.hostel.price}/Month</h4>
+   <h4>Price {hostelprice} Rs/Month</h4>
    <p>{data.state.hostel.location}</p>
    </div>
    <div className="counterdiv">

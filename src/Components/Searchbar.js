@@ -13,8 +13,8 @@ function Searchbar(props) {
   return (
     <div className='mainbody'>
        <div className='searchbar'>
-        <input type="text" placeholder="search here" value={selected ? selected : searchitem} onChange={(e)=>setSearchitem(e.target.value)}></input>
-        <button onClick={search}>SEARCH</button>
+       <div className='positionsearch'><input type="text" placeholder="Search here" value={selected ? selected : searchitem} onChange={(e)=>setSearchitem(e.target.value)}></input>
+        <img src="https://cdn-icons-png.flaticon.com/128/3287/3287210.png" alt="search"  className="searchimage" onClick={search}></img></div>
         {searchdata.filter((item)=>{
             const data=item.toLowerCase();
             const inputdata=searchitem.toLowerCase();

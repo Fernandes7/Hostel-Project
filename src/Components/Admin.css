@@ -9,12 +9,31 @@
     justify-content: center;
     align-items: center;
 }
+.radiodiv{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    width:500px;
+    height: 100px;
+    font-family: NATS;
+    color:white;
+}
+.radiodiv input{
+    width:10px;
+    height: 10px;
+}
+.divofdiv{
+    justify-content: center;
+    align-items: center;
+    display:flex;
+}
 .adminwrap{
     background: rgb(239,233,245);
     background: radial-gradient(circle, rgba(239,233,245,1) 0%, rgba(205,231,233,1) 100%);
     -webkit-box-shadow: 10px 5px 23px -8px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 5px 23px -8px rgba(0,0,0,0.75);
-     box-shadow: 10px 5px 23px -8px rgba(0,0,0,0.75);
+    box-shadow: 10px 5px 23px -8px rgba(0,0,0,0.75);
     width:600px;
     margin-top: 30px;
     display:flex;
@@ -47,4 +66,13 @@
     background: rgb(211,212,246);
     background: radial-gradient(circle, rgba(211,212,246,1) 0%, rgba(154,165,244,1) 100%);
     border: none;
+}
+.divofoptioninput{
+    display:flex;
+    gap:10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding:20px 0px 20px 0px; 
 }

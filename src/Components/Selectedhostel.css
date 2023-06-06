@@ -25,9 +25,10 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .selectmainrightmain{
     width:40%;
-    height: 85%;
+    min-height: 85%;
     position: absolute;
-    top:10%;
+    padding-bottom: 10px;
+    top:7%;
     right:5%;
     background: rgb(192,239,250);
 background: linear-gradient(90deg, rgba(192,239,250,1) 0%, rgba(226,232,240,1) 100%);
@@ -271,7 +272,7 @@ color:rgb(11, 2, 27)
     border: 2px solid rgb(24, 42, 100);
     border-radius: 10px;
 }
-.serviceborder img{
+.serviceborderimg{
     width:20px;
     height: 20px;
     position:absolute;
@@ -365,10 +366,86 @@ color:rgb(11, 2, 27)
 -moz-box-shadow: 10px 10px 10px -8px rgba(0,0,0,0.75);
 box-shadow: 10px 10px 10px -8px rgba(0,0,0,0.75);
 }
+.conformservicebutton{
+    width:200px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 80px;
+    margin-top: 20px;
+    background: rgb(155, 237, 255);
+    font-family: "Lobster";
+    color:black;
+    -webkit-box-shadow: 10px 10px 10px -8px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 10px -8px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 10px -8px rgba(0,0,0,0.75);
+}
 .closeofbook{
     width:25px;
     height: 25px;
     position: absolute;
     top:10px;
     right: 10px;
+}
+.customizehead{
+    font-family: arapey;
+    text-align: center;
+    margin-top: 20px;
+    color:rgb(5, 5, 78);
+    margin-bottom: 20px;
+}
+.cutomizeoptdiv{
+    width:350px;
+    margin-left: 5px;
+    height:70px;
+    margin-bottom: 10px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 18px -15px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 18px -15px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 18px -15px rgba(0,0,0,0.75);
+    background: rgb(195,242,249);
+background: linear-gradient(90deg, rgba(195,242,249,1) 0%, rgba(212,221,237,1) 100%);
+}
+.pofcustomixe{
+    text-align: start;
+    font-family:"Lobster";
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.imageserviceofdiv{
+    width:30px;
+    height: 30px
+}
+.ptag{
+    font-family: arapey;
+    text-align: start;
+}
+.warpofeachservice{
+    display:flex;
+    gap:10px;
+    align-items: center;
+    margin-left: 10px;
+}
+.reductionp{
+    font-family: poppins;
+    font-size: 10px;
+    text-align: start;
+    margin-left: 10px;
+}
+.toggle{
+    margin-left: 180px;
+}
+.priceinadjust{
+    color:rgb(5, 5, 73);
+    font-family: "Lobster";
+    text-align: start;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.servicecust{
+    font-family:poppins;
+    color:rgb(3, 3, 85);
 }

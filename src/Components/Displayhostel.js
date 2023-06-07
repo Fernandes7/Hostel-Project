@@ -79,6 +79,7 @@ let hostel=hostelarray.map((item)=>{
         <p className='ptagfordistancefrommainloaction'>42km from {item.mainlocation}</p>
         </div>
         <div className='ratewithfavdiv'>
+        {item.customiseservice===true ?<p className='customisep'>Services and Price can be Customise</p> :<p className='customisepp'>Services and Price are Fixed</p>}
         <h4 onClick={()=>console.log("pleaseeelookhere",favdatarray)}>Rate {item.price} Rs/Month</h4>
         <div>
         <GiHandheldFan />

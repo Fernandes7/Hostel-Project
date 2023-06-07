@@ -1,28 +1,35 @@
 import "./Selectedhostel.css"
 import {useLocation, useNavigate} from "react-router-dom"
-import {BsPerson} from "react-icons/bs"
+import {BsFillPersonVcardFill, BsPerson, BsPersonCircle} from "react-icons/bs"
 import {GiHandheldFan} from "react-icons/gi"
 import {GoLocation} from "react-icons/go"
-import {GrPhone} from "react-icons/gr"
+import {GrDocumentTime, GrPhone} from "react-icons/gr"
 import {IoBedOutline} from "react-icons/io5"
 import { GoPerson } from "react-icons/go"
 import Map from './Map'
 import { useState } from "react"
 import axios from "axios"
 import ReactSwitch from "react-switch"
+import Alert from "./Alert"
 function Selectedhotel() {
   const history=useNavigate()
   const data=useLocation()
+  const [actualreviewdata,setactualreview]=useState()
   const [togglecheckarray,setTogglecheckarray]=useState([])
   const [enableservice,setEnableservice]=useState(false)
+  const [review,setReview]=useState()
+  const [reviewrate,setReviewrate]=useState()
+  const [reviewdata,setreviewdata]=useState({hostelid:data.state.hostel._id,reviewarray:{}})
+  const [enableaddreview,SetenableaddReview]=useState(false)
   const [hostelprice,setHostelPrice]=useState(data.state.hostel.price)
   const [enablebooking,setEnablebooking]=useState(false)
   const [bookingdata,setBookingdata]=useState({Bookeduserid:"",Bookedhostelid:"",Noofrooms:""})
   const [Noofroom,setNoofroom]=useState(1)
+  const [viewreview,setViewreview]=useState(false)
   const amenty=data.state.hostel.amenities.split(",")
-  const nearbyplace=["Kadamakudi View Point","Salt Resturent","Bus Stand","Edappaly Church","Kochi Metro Rail"]
+  const nearbyplace=data.state.hostel.nearbyplace.split(",")
+  const images=data.state.hostel.hostelmoreimage.split(",")
   const services=["iron","wash","food"]
-  console.log("mappeddata",data.state)
   const bookingfunction=()=>{
   setEnableservice(false)
   setEnablebooking(true)
@@ -90,6 +97,38 @@ function Selectedhotel() {
   const customisefunction=()=>{
     setEnableservice(false)
   }
+  const checkaddReview=()=>{
+    axios.post(`http://localhost:8000/checkbookeduser/${data.state.user._id}`,{data:data.state.hostel._id}).then((responce)=>{
+      if(responce.data.success==="CA")
+       SetenableaddReview(true)
+      else
+      alert("First You Need to Book This Hostel To Review....") 
+    })
+  }
+  const [notificationenable,setNotificationenable]=useState(false)
+  const addreviewcall=()=>{
+  setreviewdata({...reviewdata,reviewarray:{userid:data.state.user._id,username:data.state.user.username,review:review,reviewrate:reviewrate}})
+  console.log("ressssssssss",reviewdata)
+  reviewdata.reviewarray.review && axios.post("http://localhost:8000/addreview",{data:reviewdata}).then((responece)=>{
+    console.log(responece)
+    if(responece.data.success==="NSS" || responece.data.success==="SS")
+    {
+      SetenableaddReview(false)
+      setNotificationenable(true)
+      setTimeout(()=>{
+        setNotificationenable(false)
+      },2500)
+    }
+  })
+  }
+  const fetchviewdatafun=()=>{
+    setViewreview(true)
+    SetenableaddReview(false)
+    axios.get(`http://localhost:8000/getreview/${data.state.hostel._id}`).then((responce)=>
+    {
+      setactualreview(responce.data[0].reviewarray)
+    })
+  }
   return (
     <div className="selectmaindiv">
     <img className="selectedbgimg" src="http://www.wallpaperup.com/uploads/wallpapers/2013/07/16/119325/7b375e1b4e908d53fd1b53394bb31832.jpg" alt="imagesbg"></img>
@@ -120,11 +159,11 @@ function Selectedhotel() {
           <p>Gym</p>
         </div>
       )
-      else if(item==="Power Bank")
+      else if(item==="Inverter")
       return(
         <div className="amenitydiv">
           <img src="https://cdn-icons-png.flaticon.com/128/10820/10820540.png" alt="wifi"></img>
-          <p>PowerBank</p>
+          <p>Inverter</p>
         </div>
       )
       else if(item==="food")
@@ -140,28 +179,35 @@ function Selectedhotel() {
       <h3>{data.state.hostel.hostelname}</h3>
       <div className="contentsubflexdiv">
       <GoLocation/>
-      <p className="contentdivofselectleftp">{data.state.hostel.mainlocation}</p>
+      <p className="contentdivofselectleftp">{data.state.hostel.location}</p>
       </div>
       <div className="contentsubflexdiv">
       <IoBedOutline />
-      <p className="contentdivofselectleftp">BedType: Single</p>
+      <p className="contentdivofselectleftp"> BedType: {data.state.hostel.category}</p>
       </div>
       <p className="descriptionpofselect">{data.state.hostel.description}</p>
     </div>
     <div className="contentdivofselectright">
       <div className="contentsubflexdiv">
         <GrPhone />
-        <p className="contentdivofselectleftp">7025059876</p>
+        <p className="contentdivofselectleftp">{data.state.hostel.contactno}</p>
       </div>
       <div className="contentsubflexdiv">
         <GoPerson />
-        <p className="contentdivofselectleftp">Owner:Unknown</p>
+        <p className="contentdivofselectleftp">Owner:{data.state.hostel.ownername}</p>
+      </div>
+      <div className="contentsubflexdiv">
+        <GrDocumentTime />
+        <p className="contentdivofselectleftp">Tenure of Days:30 Days</p>
+      </div>
+      <div className="contentsubflexdiv">
+      <BsFillPersonVcardFill />
+        <p className="contentdivofselectleftp">Services for Students</p>
       </div>
     </div>
-    <p className="policyp">Read the Hostel Policy Before Booking........</p>
-    <p className="policypt">To Read Click View service</p>
     </div>
     <Map hostel={data.state.hostel} /> 
+    <div>
     <div className="maprightdiv">
      <h3 className="nearbyh3">Nearby Places.......</h3>
      <div>
@@ -174,6 +220,13 @@ function Selectedhotel() {
       </ul>
      </div>
     </div>
+    <div className="reviebuttondiv">
+    <button onClick={checkaddReview}>Add Review</button>
+     <button onClick={fetchviewdatafun}>View Review</button></div>
+    </div>
+    <div className="infodiv">
+    <div> <p className="policyp">Read the Hostel Policy Before Booking Click View Service........</p>
+    </div></div>
     </div>
     <div className="selectmainrightmain">
       <img src={data.state.hostel.hostelimage} alt="hostelimage"></img>
@@ -183,15 +236,15 @@ function Selectedhotel() {
       <h5 className="subimageheading">Take a Look on the Service</h5>
       <div className="wrapofhostelserviceimagesectiondiv">
       <div className="hostelserviceimagesectiondiv">
-        <img src="https://www.christinacooks.com/wp-content/uploads/2021/01/soba_noodles_with_chrispy_seitan_and_vegetables_lt.jpg" alt="imagesservisec"></img>
+        <img src={images[0]} alt="imagesservisec"></img>
         <div className="selectionimagecontent"><h4>Food and Beverage</h4>
-        <p>Healty food shared with love and peace with Varety of Features</p>
+        <p>Healty food shared with love and peace with Variety of choices</p>
       </div>
       </div>
       <div className="hostelserviceimagesectiondiv">
-        <img src="http://www.zastavki.com/pictures/1920x1200/2012/Interior_Hotel_Room_033155_.jpg" alt="imagesservisec"></img>
+        <img src={images[0]} alt="imagesservisec"></img>
         <div className="selectionimagecontent"><h4>Bed Rooms Feature</h4>
-        <p>Healty food shared with love and peace with Varety of Features</p>
+        <p>Well Manitained Bedroom with Bathroom Facility</p>
       </div>
       </div>
     </div>
@@ -209,7 +262,7 @@ function Selectedhotel() {
        <p>Ac</p></div>
       </div>
     </div>
-    <p className="sustimizetext" onClick={servicefunction}>View Service or Customize</p>
+    {data.state.hostel.customiseservice===true ?<p className="sustimizetext" onClick={servicefunction}>View Service or Customize</p>:<p className="sustimizetext">Connot customise service</p>}
     <button className="Bookingbutton" onClick={bookingfunction}>Book Now</button>
     </div>
    </div>
@@ -235,7 +288,7 @@ function Selectedhotel() {
       return(
       <div className="cutomizeoptdiv">
      <div className="warpofeachservice">
-      <img src="https://cdn-icons-png.flaticon.com/128/79/79677.png" alt="service" className="imageserviceofdiv"></img>
+      <img src="https://cdn-icons-png.flaticon.com/128/857/857681.png" alt="service" className="imageserviceofdiv"></img>
       <p className="ptag">Food</p>
       <ReactSwitch checked={togglecheckarray.includes(key)?false :true}  onChange={()=>togglehandle(key,item)} className="toggle" key={key}/>
      </div>
@@ -246,7 +299,7 @@ function Selectedhotel() {
       return(
         <div className="cutomizeoptdiv">
      <div className="warpofeachservice">
-      <img src="https://cdn-icons-png.flaticon.com/128/79/79677.png" alt="service" className="imageserviceofdiv"></img>
+      <img src="https://cdn-icons-png.flaticon.com/128/1104/1104590.png" alt="service" className="imageserviceofdiv"></img>
       <p className="ptag">wash</p>
       <ReactSwitch checked={togglecheckarray.includes(key)?false :true}  onChange={()=>togglehandle(key,item)} className="toggle" key={key}/>
      </div>
@@ -275,6 +328,33 @@ function Selectedhotel() {
    </div>
    <button className="conformbookingbutton" onClick={conformbookingfunction}>Conform Booking</button>
    </div>}
+   {enableaddreview && <div className="addreviewdiv">
+   <img src="https://cdn-icons-png.flaticon.com/128/2734/2734822.png" alt="closert" className="closerevieadaa" onClick={()=>SetenableaddReview(false)}></img>
+   <h4 className="bookerh4">Hey {data.state.user.username}, Give Your Valuable Review</h4>
+   <input type="text" Placeholder="Give Your Feed Back Here" className="reviewinput" onChange={(e)=>setReview(e.target.value)}></input>
+   <p className="giveratep">Give a Rating Out of 5</p>
+   <input type="number" className="revewrate" onChange={(e)=>setReviewrate(e.target.value)}></input>
+   <button className="addreviwbutton" onClick={addreviewcall}>Add Review</button>
+   </div>}
+   {viewreview && <div className="viewreviewdiv">
+    <img src="https://cdn-icons-png.flaticon.com/128/2732/2732657.png" alt="" className="closeofopenviewreviw" onClick={()=>setViewreview(false)}></img>
+    <h3 className="headofreview">Here the Revies...</h3>
+     {actualreviewdata ? actualreviewdata.map((item,key)=>{
+      return(
+        <div className={parseInt(item.reviewrate)>3 ?"manidivofreview":"manidivofreviews"}>
+        <div className="reviewrowperson">
+        <BsPersonCircle/>
+        <p className="reviewuser">{item.username}</p>
+        </div>
+        <div className="diddidvreview">
+          <p>{item.review}</p>
+          <p>Rate: {item.reviewrate}/5</p>
+        </div>
+        </div>
+      )
+     }):<h4 className="deafultviewa">Currently This hostel Have no Reviews</h4>}
+   </div>}
+   {notificationenable && <Alert data={"Thankyou For Submiting Your Review"}/>}
    </div>
   )
 }

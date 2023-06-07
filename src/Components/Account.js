@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {CiLogout} from "react-icons/ci"
 import {FaRegUser,FaUserEdit} from "react-icons/fa"
 import {BsPersonWorkspace} from "react-icons/bs"
+import {GiBlackBook} from "react-icons/gi"
 import { Outlet, useLocation, useNavigate } from 'react-router'
 import "./Account.css"
 import "./Displayhostel"
@@ -9,17 +10,27 @@ import Displayhostel from './Displayhostel'
 import Searchbar from './Searchbar'
 import logo from "./Images/22.jpg"
 import Accountloader from './Accountloader'
+import axios from 'axios'
 function Account() {
   const userdata=useLocation()
   const history=useNavigate()
   const [location,setLocation]=useState("")
+  const [bookdata,setBookdata]=useState()
   const [profileenable,setProfileenable]=useState(false)
   const [sortenable,setSortenable]=useState(false)
+  const [enableviewbook,setEnableviewbook]=useState(false)
   const profile=()=>{
     if(profileenable===false)
     setProfileenable(true)
     else
     setProfileenable(false)
+  }
+  const enablefuction=()=>{
+    setEnableviewbook(true)
+    axios.get(`http://localhost:8000/getbooking/${userdata.state.data._id}`).then((responce)=>{
+      console.log(responce)
+      setBookdata(responce.data)
+    })
   }
   return (
     <div className='blackbody'>
@@ -41,6 +52,10 @@ function Account() {
         <FaUserEdit />
         <p>Edit Profile</p>
       </div>
+      <div className='innerprofilediv' onClick={enablefuction}>
+        <GiBlackBook />
+        <p>Your Bookings</p>
+      </div>
       <div className='innerprofilediv' onClick={()=>history("/")}>
         <CiLogout />
         <p>Logout</p>
@@ -51,6 +66,19 @@ function Account() {
       </div>  }
       </div>
       <Outlet/>
+      {enableviewbook && <div className='profileenablewrapdiv'>
+      <img src="https://cdn-icons-png.flaticon.com/128/2763/2763138.png" alt="imagesdf" className='closeofprofile'onClick={()=>setEnableviewbook(false)}></img>
+      {bookdata && bookdata.map((item,key)=>{
+        return(<div key={key}>
+        <img src={item.Bookedhostelid.hostelimage} alt="imgaess" className='bookimage'></img>
+        <h3 className='bookimageh3'>{item.Bookedhostelid.hostelname}</h3>
+        <div className='bookimagediv'>
+          <p>Price:{item.Bookedhostelid.price} Rs/Month</p>
+          <p>Location:{item.Bookedhostelid.mainlocation}</p>
+        </div>
+        </div>)
+      })}
+      </div>}
     </div>
   )
 }

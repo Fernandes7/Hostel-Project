@@ -19,11 +19,12 @@ function Admin() {
         <h3>HOSTELS DATA</h3>
         <input type="text" placeholder="Hostel name" name="hostelname" onChange={handle}></input>
         <input type="text" placeholder="Hostel image" name="hostelimage" onChange={handle}></input>
+        <input type="text" placeholder="HostelFoodimage and Room image" name="hostelmoreimage" onChange={handle}></input>
         <input type="text" placeholder="Hostel location" name="location" onChange={handle}></input>
         <input type="text" placeholder="Main Loction" name="mainlocation" onChange={handle}></input>
         <input type="Number" placeholder="Distance From Main Location" name="distancefrommailocation" onChange={handle}></input>
         <input type="number" placeholder="Cost per month" name="price" onChange={handle}></input>
-        <input type="number" placeholder="Cost without food" name="pricewithoutfood" onChange={handle}></input>
+        <input type="number" placeholder="No days of tenure" name="tenure" onChange={handle}></input>
         <input type="text" placeholder="hosteltype eg:Men or Women" name="hosteltype" onChange={handle}></input>
         <input type="number" placeholder="No of members in room" name="noofmembersinroom" onChange={handle}></input>
         <input type="text" placeholder="Description" name="description" onChange={handle}></input>

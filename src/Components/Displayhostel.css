@@ -90,6 +90,7 @@ font-family: 'Gentium plus';
     gap:5px;
     align-items: center;
     margin-top: 10px;
+    width:750px;
 }
 .hostelrow{
     width:100%;
@@ -268,4 +269,20 @@ font-family: 'Gentium Plus', cursive;
     right: 20px;
     width:20px;
     height: 20px;
+}
+.customisep{
+    position: absolute;
+    font-family:NATS;
+    color:rgb(4, 124, 4);
+    font-size: 12px;
+    top:60%;
+    left:40%;
+}
+.customisepp{
+    position: absolute;
+    font-family:NATS;
+    color:rgb(113, 4, 4);
+    font-size: 12px;
+    top:60%;
+    left:40%;
 }

@@ -33,7 +33,8 @@
 }
 .profilediv{
     width:200px;
-    height: 150px;
+    min-height: 150px;
+    padding-bottom:10px;
     background: rgb(192,239,250);
 background: linear-gradient(90deg, rgba(192,239,250,1) 0%, rgba(207,232,231,1) 50%, rgba(211,221,234,1) 100%);
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -64,7 +65,8 @@ body{
     opacity:0;
     transition:all 1s;
     width:200px;
-    height: 150px;
+    min-height: 150px;
+    padding-bottom:10px;
     background: rgb(192,239,250);
     background: linear-gradient(90deg, rgba(192,239,250,1) 0%, rgba(207,232,231,1) 50%, rgba(211,221,234,1) 100%);
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -81,7 +83,7 @@ body{
 }
 .profileenablewrapdiv{
     width:400px;
-    min-height:300px;
+    min-height:100px;
     background: red;
     position: absolute;
     top:50%;
@@ -90,7 +92,7 @@ body{
     transform: translate(-50%,-50%);
     background: rgb(193,235,241);
     background: linear-gradient(90deg, rgba(193,235,241,1) 0%, rgba(202,218,246,1) 100%);
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 .bookimage{
     width:300px;
@@ -100,7 +102,7 @@ body{
 .bookimageh3{
     text-align: center;
     font-family: "Lobster";
-    margin-top:10px;
+    margin-bottom: 10px;
 }
 .bookimagediv{
     display:flex;
@@ -114,4 +116,17 @@ body{
   position: absolute;
   top:10px;
   right:10px;  
+}
+.bookdef{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    font-family:"Lobster"
+}
+.pbid{
+    text-align: start;
+    font-family:arapey;
+    font-size:13px;
+    margin-left:40px;
 }

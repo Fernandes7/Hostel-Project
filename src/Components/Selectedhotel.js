@@ -29,7 +29,7 @@ function Selectedhotel() {
   const amenty=data.state.hostel.amenities.split(",")
   const nearbyplace=data.state.hostel.nearbyplace.split(",")
   const images=data.state.hostel.hostelmoreimage.split(",")
-  const services=["iron","wash","food"]
+  const services=data.state.hostel.service.split(",")
   const bookingfunction=()=>{
   setEnableservice(false)
   setEnablebooking(true)
@@ -145,6 +145,13 @@ function Selectedhotel() {
           <p>Wifi</p>
         </div>
       )
+      else if(item==="vehicle")
+      return(
+        <div className="amenitydiv">
+          <img src="https://cdn-icons-png.flaticon.com/128/4277/4277309.png" alt="wifi"></img>
+          <p>Travel Service</p>
+        </div>
+      )
       else if(item==="Ac")
       return(
         <div className="amenitydiv">
@@ -198,7 +205,7 @@ function Selectedhotel() {
       </div>
       <div className="contentsubflexdiv">
         <GrDocumentTime />
-        <p className="contentdivofselectleftp">Tenure of Days:30 Days</p>
+        <p className="contentdivofselectleftp">Tenure:{data.state.hostel.tenure} Days</p>
       </div>
       <div className="contentsubflexdiv">
       <BsFillPersonVcardFill />
@@ -242,7 +249,7 @@ function Selectedhotel() {
       </div>
       </div>
       <div className="hostelserviceimagesectiondiv">
-        <img src={images[0]} alt="imagesservisec"></img>
+        <img src={images[1]} alt="imagesservisec"></img>
         <div className="selectionimagecontent"><h4>Bed Rooms Feature</h4>
         <p>Well Manitained Bedroom with Bathroom Facility</p>
       </div>
@@ -295,7 +302,7 @@ function Selectedhotel() {
      <p className="reductionp">Reduction -{data.state.hostel.nofood}rs/month</p>
     </div>
       )
-      else
+      else if(item==="wash")
       return(
         <div className="cutomizeoptdiv">
      <div className="warpofeachservice">
@@ -342,9 +349,12 @@ function Selectedhotel() {
      {actualreviewdata ? actualreviewdata.map((item,key)=>{
       return(
         <div className={parseInt(item.reviewrate)>3 ?"manidivofreview":"manidivofreviews"}>
+        <div className="emajomaindiv">
         <div className="reviewrowperson">
         <BsPersonCircle/>
         <p className="reviewuser">{item.username}</p>
+        </div>
+        <img src={parseInt(item.reviewrate)>3?"https://cdn-icons-png.flaticon.com/128/10851/10851206.png":parseInt(item.reviewrate)===3 ?"https://cdn-icons-png.flaticon.com/128/742/742923.png":"https://cdn-icons-png.flaticon.com/128/742/742774.png"} alt="imago" className="emoji"></img>
         </div>
         <div className="diddidvreview">
           <p>{item.review}</p>

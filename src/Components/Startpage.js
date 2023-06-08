@@ -19,9 +19,9 @@ function Startpage() {
         </div>
         <p className='startcontent'>FEEL LIKE HOME</p>
         <div className='startpagecontent'>
-          <h3>Premium Accomordation</h3>
-          <p>Lets Find out the Better place for your better StayNote that the development build is not optimized.
-          To create a production build, use npm run build.webpack compiled successfully</p>
+          <h3>Premium Accommodation</h3>
+          <p>Lets Find Out a Better Place with full of Customer satisfaction.
+          Come To Us and Have a Experience with Us with Good Memories</p>
         </div>
     </div>
   )

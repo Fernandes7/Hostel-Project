@@ -10,9 +10,9 @@ function Accountloader() {
             <img src="https://assets.cntraveller.in/photos/60ba04fc9ff4caf0197fd6ab/master/w_1600%2Cc_limit/Larisa4.jpg" alt=""></img>
         </div>
         <div className='loadercontentdiv'>
-            <h3>Welcome and Explore New Hostels</h3>
-            <p>Note that the development build is not optimized.
-             To create a production build, use npm run build.</p>
+            <h3>Welcome and Explore New Hostels in Pocket PG</h3>
+            <p>Explore the Vaiety of Hostels with affordable price and required Features.
+            Your Satisfaction and Pleasure is more important to US</p>
              <h5>Select the Location To View Hostels</h5>
         </div>
     </div>

@@ -64,7 +64,7 @@ hostelarray= !displaysort ? datas.filter((data)=>{
   
 })
 let hostel=hostelarray.map((item)=>{
-  if(item.Availableroom>1)
+  if(item.Availableroom>0)
   return(
     <div className='hostelmaindiv'>
       <div className='hostelwrap'>
@@ -76,7 +76,7 @@ let hostel=hostelarray.map((item)=>{
         <div><GoLocation />
         <p className='locationcontent'>{item.location}</p>
         </div>
-        <p className='ptagfordistancefrommainloaction'>42km from {item.mainlocation}</p>
+        <p className='ptagfordistancefrommainloaction'>{item. distancefrommailocation}km from {item.mainlocation}</p>
         </div>
         <div className='ratewithfavdiv'>
         {item.customiseservice===true ?<p className='customisep'>Services and Price can be Customise</p> :<p className='customisepp'>Services and Price are Fixed</p>}
@@ -108,6 +108,7 @@ let hostel=hostelarray.map((item)=>{
         <p className='locationcontent'>{item.location}</p>
         </div>
         <p className='ptagfordistancefrommainloaction'>42km from {item.mainlocation}</p>
+        <div className='ratewithfavdiv'></div>
         </div>
     <h4>Rate {item.price}Rs/Month</h4>
     </div>
@@ -137,31 +138,56 @@ let sorteddata;
 const sort=(no)=>{
  sorteddata=hostelarray.sort((a,b)=>a.price>b.price ?  no===1 ? 1:-1 : no===1 ? -1:1)
  let sorteddisplay=(sorteddata).map((item)=>{
+  if(item.Availableroom>0)
     return(
       <div className='hostelmaindiv'>
-        <div className='hostelwrap' onClick={()=>history("/sh",{state:{user:props.userid.data,hostel:item}})}>
-          <img src={item.hostelimage} alt="img"></img>
-          <div className='hostelcontent'>
-          <h3>{item.hostelname}</h3>
-          <p>{item.description}</p>
-          <div className='locationcontentdiv'>
-          <div><GoLocation />
-          <p className='locationcontent'>{item.location}</p>
-          </div>
-          <p className='ptagfordistancefrommainloaction'>42km from {item.mainlocation}</p>
-          </div>
-          <div className='ratewithfavdiv'>
-          <h4>Rate {item.price}Rs/Month</h4>
-          <div>
+      <div className='hostelwrap'>
+        <img src={item.hostelimage} alt="img"></img>
+        <div className='hostelcontent' onClick={()=>history("/sh",{state:{user:props.userid.data,hostel:item}})}>
+        <h3>{item.hostelname}</h3>
+        <p>{item.description}</p>
+        <div className='locationcontentdiv'>
+        <div><GoLocation />
+        <p className='locationcontent'>{item.location}</p>
+        </div>
+        <p className='ptagfordistancefrommainloaction'>42km from {item.mainlocation}</p>
+        </div>
+        <div className='ratewithfavdiv'>
+        {item.customiseservice===true ?<p className='customisep'>Services and Price can be Customise</p> :<p className='customisepp'>Services and Price are Fixed</p>}
+        <h4 onClick={()=>console.log("pleaseeelookhere",favdatarray)}>Rate {item.price} Rs/Month</h4>
+        <div>
         <GiHandheldFan />
         <p>{item.Ac}</p>
         <BsPerson />
         <p>{item.hosteltype}</p>
         </div>
         </div>
-          </div>
         </div>
+        {favdatarray.includes(item._id)?<FaHeart onClick={()=>addfavid(item)}/>:<FaRegHeart onClick={()=>addfavid(item)}/>}
       </div>
+    </div>
+    )
+    else
+    return(
+      <div className='hostelmaindiv'>
+  <div className='hostelwrap'>
+    <img src={item.hostelimage} alt="img"></img>
+    <div className='hostelcontent'>
+    <div className='unavilablewrap'></div>
+    <h4 className='unvalibleh4content'>Currently Unaviable</h4>
+    <h3>{item.hostelname}</h3>
+    <p>{item.description}</p>
+    <div className='locationcontentdiv'>
+        <div><GoLocation />
+        <p className='locationcontent'>{item.location}</p>
+        </div>
+        <p className='ptagfordistancefrommainloaction'>42km from {item.mainlocation}</p>
+        <div className='ratewithfavdiv'></div>
+        </div>
+    <h4>Rate {item.price}Rs/Month</h4>
+    </div>
+  </div>
+</div>
     )
   })
   props.setSortenable(true)

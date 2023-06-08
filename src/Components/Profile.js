@@ -9,6 +9,7 @@ function Profile() {
   const [profileilmgenable,setProfileimageenable]=useState(false)
   const [data,setData]=useState({})
   const [userimage,setUserimage]=useState()
+  const [loading,setLoaging]=useState(false)
   let base64String
   const imagepopup=(value)=>{
     setProfileimageenable(value)
@@ -31,8 +32,10 @@ function Profile() {
   }) 
   }
   const upload=()=>{
+    setLoaging(true)
     axios.post(`http://localhost:8000/uploadimage/${profile.state.profile._id}`,{data}).then((responce)=>{
       imagepopup(false)
+      setLoaging(false)
       alert("Image Updated Succesfully")
       displayimagefunction()
     })
@@ -113,6 +116,7 @@ function Profile() {
     </div>
     {profileilmgenable && <div className='profileupdatediv'>
       <input type="file" onChange={imagesave}></input>
+      {loading && <p style={{fontFamily:"arapey"}}>Loading.....</p>}
       <div> <button className='detailsbutton' onClick={fetchimage}>Close</button><button className='detailsbutton' onClick={upload}>Upload</button></div>
     </div>}
     </div>

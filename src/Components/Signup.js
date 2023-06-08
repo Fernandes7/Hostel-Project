@@ -23,8 +23,9 @@ function Signup() {
       <div className='logindiv'>
         <img src="https://images.unsplash.com/photo-1617098900591-3f90928e8c54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGJlZCUyMHJvb218ZW58MHx8MHx8&w=1000&q=80" alt="loginimage" className='loginimages'></img>
         <div className='inputdiv'>
-        <h2>Welcome Hosteler</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <h2 style={{textAlign:"center"}}>Welcome</h2>
+        <p style={{textAlign:"start"}}>Welcome to Pocket PG.Explore the new ways to find a Hostel of your perfect choice.Come and Just Explore </p>
+        <h4 style={{textAlign:"center"}}>SignUp to Pocket PG</h4>
         <input type="text" placeholder="Enter Your Name" name="username" onChange={handle}></input>
         <input type="text" placeholder="Enter Your Email" name="email" onChange={handle}></input>
         <input type="password" placeholder="Enter Your Password" name="password" onChange={handle}></input>

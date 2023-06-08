@@ -68,7 +68,7 @@ function Account() {
       <Outlet/>
       {enableviewbook && <div className='profileenablewrapdiv'>
       <img src="https://cdn-icons-png.flaticon.com/128/2763/2763138.png" alt="imagesdf" className='closeofprofile'onClick={()=>setEnableviewbook(false)}></img>
-      {bookdata && bookdata.map((item,key)=>{
+      {(bookdata && bookdata.length>0) ? bookdata.map((item,key)=>{
         return(<div key={key}>
         <img src={item.Bookedhostelid.hostelimage} alt="imgaess" className='bookimage'></img>
         <h3 className='bookimageh3'>{item.Bookedhostelid.hostelname}</h3>
@@ -76,8 +76,9 @@ function Account() {
           <p>Price:{item.Bookedhostelid.price} Rs/Month</p>
           <p>Location:{item.Bookedhostelid.mainlocation}</p>
         </div>
+        <p className='pbid'>Booking id:{item.Bookedhostelid._id}</p>
         </div>)
-      })}
+      }):<p className='bookdef'>You Currently Didnt have any Bookings</p>}
       </div>}
     </div>
   )

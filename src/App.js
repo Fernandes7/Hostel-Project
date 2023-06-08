@@ -12,6 +12,7 @@ import Profile from './Components/Profile'
 import Profileupdate from './Components/profileupdate';
 import AdminPage from './Components/AdminPage';
 import Booksucces from './Components/Booksucces';
+import AdminviewBooking from './Components/AdminviewBooking';
 function App() {
 const [userid,setUserid]=useState("")
   return (
@@ -21,6 +22,7 @@ const [userid,setUserid]=useState("")
         <Routes>
         <Route element={<Admin />}  path='/admin'></Route>
         <Route element={<AdminPage />} path="/adminpage"></Route>
+        <Route element={<AdminviewBooking />} path="/adminviewbooking"></Route>
         <Route element={<Startpage />} path="/"></Route>
         <Route element={<Login />} path="/login"></Route>
         <Route element={<Signup />} path="/signup"></Route>

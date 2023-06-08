@@ -1,15 +1,17 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import "./Admin.css"
+import { useNavigate } from 'react-router'
 function Admin() {
   const [data,setdata]=useState({})
+  const history=useNavigate()
   const handle=(event)=>{
     setdata({...data,[event.target.name]:event.target.value})
   }
   const submit=()=>{
     axios.post("http://localhost:8000/addhostel",{data}).then((responce)=>{
-        console.log(responce)
         alert("Hostel Data Submited")
+        history("/adminpage")
     })
     console.log(data)
   }

@@ -1,6 +1,4 @@
 import React from 'react'
-import {BiUserCircle} from "react-icons/bi"
-import {IoLogInOutline} from "react-icons/io5"
 import logo from "./Images/22.jpg"
 import { useNavigate } from 'react-router'
 import "./Startpage.css"
@@ -13,8 +11,8 @@ function Startpage() {
          <img className='logo' src={logo} alt="logo"></img>
          <div className='logodiv'>
          <p className='signupologinptag'>Signup/Login</p>
-         <BiUserCircle className='startlogos' onClick={()=>history("/signup")}>Register</BiUserCircle>
-         <IoLogInOutline className='startlogos' onClick={()=>history("/login")}>Login</IoLogInOutline>
+         <img src="https://cdn-icons-png.flaticon.com/128/9706/9706647.png" alt="login" className='startlogos' onClick={()=>history("/signup")}></img>
+         <img src="https://cdn-icons-png.flaticon.com/128/9797/9797203.png" alt="signup" className='startlogoss' onClick={()=>history("/login")}></img>
          </div>
         </div>
         <p className='startcontent'>FEEL LIKE HOME</p>

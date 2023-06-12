@@ -51,3 +51,12 @@ font-family: arapey;
     border: 2px solid black;
     border-radius: 20px;
 }
+.backbuttoninadminpage{
+    margin-left: 90%;
+    width:100px;
+    height: 40px;
+    border-radius: 10px;
+    border:none;
+    background: rgb(184, 238, 252);
+    margin-top: 10px;
+}

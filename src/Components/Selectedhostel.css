@@ -615,3 +615,14 @@ gap:10px;
     width:20px;
     height: 20px;
 }
+.backtohome{
+    position: absolute;
+    right:8%;
+    top:10px;
+    background: rgb(199, 236, 248);
+    border:none;
+    color:black;
+    font-family: arapey;
+    border-radius: 5px;
+    padding: 5px;
+}

@@ -132,6 +132,7 @@ function Selectedhotel() {
   return (
     <div className="selectmaindiv">
     <img className="selectedbgimg" src="http://www.wallpaperup.com/uploads/wallpapers/2013/07/16/119325/7b375e1b4e908d53fd1b53394bb31832.jpg" alt="imagesbg"></img>
+    <button className="backtohome" onClick={()=>history("/account",{state:{data:data.state.user}})}>Back To Home</button>
     <div className="selectmaindivfistinner">
     <div className="selectmainleftmain">
     <div>

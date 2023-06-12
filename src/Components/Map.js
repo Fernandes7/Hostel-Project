@@ -29,7 +29,7 @@ function Map(props) {
       <div className='mapwrapdiv'>
       <img className='hotelimagesinmap' src={props.hostel.hostelimage} alt="hotelimagesinmap"></img>
       <p className='mappopupcontent'>{props.hostel.hostelname}</p>
-      <p>42km from {props.hostel.mainlocation}</p>
+      <p>{props.hostel.distancefrommailocation} Km from {props.hostel.mainlocation}</p>
       </div>
     </Popup>
   </Marker>

@@ -60,7 +60,7 @@ function Account() {
         <CiLogout />
         <p>Logout</p>
       </div>
-      {userdata.state.data.isadmin && <div className='innerprofilediv' onClick={()=>history("/adminpage")}>
+      {userdata.state.data.isadmin && <div className='innerprofilediv' onClick={()=>history("/adminpage",{state:{data:userdata.state.data}})}>
         <BsPersonWorkspace/>
         <p>Admin Panel</p>
       </div>  }

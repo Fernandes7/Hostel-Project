@@ -26,8 +26,8 @@ function Login() {
       <div className='logindiv'>
         <img src="https://kitchendesignpartner.com/wp-content/uploads/2019/09/The-ideal-kitchen-is-the-social-hub-where-everyone-gathers.jpg" alt="loginimage" className='loginimage'></img>
         <div className='inputdiv'>
-        <h2 style={{textAlign:"center"}}>Welcome Again</h2>
-        <p style={{textAlign:"start"}}>Welcome to Pocket PG.Explore the new ways to find a Hostel of your perfect choice.Come and Just Explore</p>
+        <h2 style={{textAlign:"center"}}>Hey Welcome Again</h2>
+        <p style={{textAlign:"center"}}>Welcome to Pocket PG.Explore the new ways to find a Hostel of your perfect choice.Come and Just Explore</p>
         <h4 style={{textAlign:"center"}}>Login Now</h4>
         <input type="text" placeholder="Enter Your Email" name="email" onChange={handle}></input>
         <input type="password" placeholder="Enter Your Password" name="password" onChange={handle}></input>

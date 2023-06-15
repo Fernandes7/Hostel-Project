@@ -26,6 +26,7 @@ function Selectedhotel() {
   const [bookingdata,setBookingdata]=useState({Bookeduserid:"",Bookedhostelid:"",Noofrooms:""})
   const [Noofroom,setNoofroom]=useState(1)
   const [viewreview,setViewreview]=useState(false)
+  const [loadings,setLodings]=useState(false)
   const amenty=data.state.hostel.amenities.split(",")
   const nearbyplace=data.state.hostel.nearbyplace.split(",")
   const images=data.state.hostel.hostelmoreimage.split(",")
@@ -107,12 +108,14 @@ function Selectedhotel() {
   }
   const [notificationenable,setNotificationenable]=useState(false)
   const addreviewcall=()=>{
+  setLodings(true)
   setreviewdata({...reviewdata,reviewarray:{userid:data.state.user._id,username:data.state.user.username,review:review,reviewrate:reviewrate}})
   console.log("ressssssssss",reviewdata)
   reviewdata.reviewarray.review && axios.post("http://localhost:8000/addreview",{data:reviewdata}).then((responece)=>{
     console.log(responece)
     if(responece.data.success==="NSS" || responece.data.success==="SS")
     {
+      setLodings(false)
       SetenableaddReview(false)
       setNotificationenable(true)
       setTimeout(()=>{
@@ -343,6 +346,7 @@ function Selectedhotel() {
    <p className="giveratep">Give a Rating Out of 5</p>
    <input type="number" className="revewrate" onChange={(e)=>setReviewrate(e.target.value)}></input>
    <button className="addreviwbutton" onClick={addreviewcall}>Add Review</button>
+   {loadings && <h3>Adding Review.....</h3>}
    </div>}
    {viewreview && <div className="viewreviewdiv">
     <img src="https://cdn-icons-png.flaticon.com/128/2732/2732657.png" alt="" className="closeofopenviewreviw" onClick={()=>setViewreview(false)}></img>

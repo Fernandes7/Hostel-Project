@@ -5,9 +5,10 @@ function Mapcurrentlocation() {
     coordinates:{lan:"",lng:""}
   })
   const onSuccess=location=>{
+    console.log("Current LOcation",location)
   setLocation({
     loaded:true,
-    coordinates:{lat:location.coords.latitude,lng:location.coords.longitude}
+    coordinates:{lat:10.410130,lng:76.214040}
   })
   }
   const onError=error=>{

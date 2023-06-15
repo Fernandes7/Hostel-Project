@@ -27,7 +27,10 @@ axios.get("http://localhost:8000/fetchhotel").then((responce)=>{
 })
 axios.get(`http://localhost:8000/initialfav/${id}`).then((responce)=>{
     console.log("new promise",responce.data)
+    if(responce.data.favhotelidarray)
     setFavdataarray(responce.data.favhotelidarray)
+    else
+    setFavdataarray([])
   })
 },[id])
 const handle=(e)=>{
@@ -102,7 +105,7 @@ let hostel=hostelarray.map((item)=>{
         </div>
         </div>
         </div>
-        {favdatarray.includes(item._id)?<FaHeart onClick={()=>addfavid(item)}/>:<FaRegHeart onClick={()=>addfavid(item)}/>}
+        {(favdatarray && favdatarray.includes(item._id))?<FaHeart onClick={()=>addfavid(item)}/>:<FaRegHeart onClick={()=>addfavid(item)}/>}
       </div>
     </div>
   )
@@ -174,7 +177,7 @@ const sort=(no)=>{
       </div>
       </div>
       </div>
-      {(favdatarraysort.includes(item._id))?<FaHeart onClick={()=>addfavidsort(item)}/>:<FaRegHeart onClick={()=>addfavidsort(item)}/>}
+      {(favdatarraysort && favdatarraysort.includes(item._id))?<FaHeart onClick={()=>addfavidsort(item)}/>:<FaRegHeart onClick={()=>addfavidsort(item)}/>}
     </div>
   </div>
     )
@@ -207,7 +210,7 @@ const sort=(no)=>{
   return (
     <div className='displaymain'>
     <div className='displayoptions'>
-    <p className='resulttext'>Results Shown for {props.location} ........</p>
+    <p className='resulttext'>Results Shown for {props.location}</p>
     <div className='displaybuttondiv'>
       <button onClick={favdivfunction}>Liked</button>
       <button onClick={filter}>Sort</button>
